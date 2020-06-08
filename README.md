@@ -1,24 +1,6 @@
-# yujian-blog
+# YuJian-Blog
 
-## Project setup
-```
-npm install
-```
+### 基于Vue和Express的全栈博客系统。
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- [ ] 基础的博客前端搭建
+- [ ] 基础的后端增删改查
