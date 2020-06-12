@@ -3,6 +3,8 @@ import router from "./router";
 import store from "./store";
 import App from "./App.vue";
 
+import "@/assets";
+
 Vue.config.productionTip = false;
 
 new Vue({
