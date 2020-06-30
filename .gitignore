@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 /dist
+db
 
 # local env files
 .env.local
@@ -23,3 +24,4 @@ pnpm-debug.log*
 
 #LOOOO
 YuJian-Blog开发日志.md
+constant.js
