@@ -3,5 +3,5 @@ module.exports = {
   port: "port",
   user: "user",
   password: "password",
-  database: "database1"
+  database: "database"
 }
