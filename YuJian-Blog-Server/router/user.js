@@ -54,9 +54,10 @@ router.post(
 
 router.get("/info", (req, res) => {
   let decode = decoded(req);
-  console.log(decode);
-  findUser("admin").then((info) => {
-    console.log("admin", info);
+  const { username } = decode
+  console.log("decode", decode);
+  findUser(username).then((info) => {
+    console.log(username, info);
     if (info) {
       info.roles = [info.role];
       new Result(info, "用户信息查询成功").success(res);

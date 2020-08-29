@@ -4,16 +4,18 @@ const jwtAuth = require("./jwt");
 
 const Result = require("../models/Result");
 const userRouter = require("./user");
+const ArticleRouter = require("./article");
 
 const router = express.Router();
 
-router.use(jwtAuth);
+// router.use(jwtAuth);
 
 router.get("/", (req, res) => {
   res.send("Welcome Server");
 });
 
 router.use("/user", userRouter);
+router.use("/article", ArticleRouter);
 
 router.use((req, res, next) => {
   next(boom.notFound("API不存在"));

@@ -1,6 +1,7 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">name: {{ name }}</div>
+    <div class="dashboard-text">Hello {{ name }}</div>
+    <div class="dashboard-text">这是一个很简单的基于Element-Admin的后台管理系统</div>
   </div>
 </template>
 

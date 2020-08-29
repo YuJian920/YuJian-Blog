@@ -1,16 +1,16 @@
-import request from '@/utils/request'
+import request from "@/utils/request";
 
 export function login(data) {
   return request({
-    url: '/user/login',
-    method: 'post',
+    url: "/user/login",
+    method: "post",
     data
-  })
+  });
 }
 
 export function getInfo(token) {
   return request({
-    url: '/user/info',
-    method: 'get'
-  })
+    url: "/user/info",
+    method: "get"
+  });
 }
