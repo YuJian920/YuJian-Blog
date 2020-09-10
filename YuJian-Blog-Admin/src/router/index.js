@@ -46,10 +46,11 @@ export const constantRoutes = [
         meta: { title: 'ArticleCreate', icon: 'form' }
       },
       {
-        path: 'Edit',
+        path: ':id/Edit',
         name: 'ArticleEdit',
         component: () => import('@/views/Article/ArticleEdit'),
-        meta: { title: 'ArticleEdit', icon: 'edit' }
+        meta: { title: 'ArticleEdit', icon: 'edit' },
+        hidden: true
       }
     ]
   },

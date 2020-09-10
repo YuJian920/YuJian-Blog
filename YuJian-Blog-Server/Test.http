@@ -1,9 +1,9 @@
 @url = http://127.0.0.1:5000/
 ###
-POST {{ url }}article/create
+put {{ url }}/article/list/10
 Content-Type: application/json
 
 {
-  "username": "sam",
-  "password": "123456"
+  "title": "sam",
+  "content": "123456"
 }

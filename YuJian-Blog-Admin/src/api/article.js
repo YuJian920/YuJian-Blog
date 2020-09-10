@@ -14,3 +14,18 @@ export function AddArticle(data) {
     data
   });
 }
+
+export function DeleteArticle(id) {
+  return request({
+    url: `/article/list/${id}`,
+    method: "delete"
+  });
+}
+
+export function UpdataArticle(id, data) {
+  return request({
+    url: `/article/list/${id}`,
+    method: "put",
+    data
+  });
+}

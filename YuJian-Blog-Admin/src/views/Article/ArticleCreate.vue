@@ -29,7 +29,17 @@ export default {
   },
   methods: {
     createArticle() {
-      AddArticle(this.ArticleForm);
+      AddArticle(this.ArticleForm).then((res) => {
+        if (res.code === 0) {
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
+          this.$router.push("/Article/List");
+        } else {
+          this.$message.error(res.msg);
+        }
+      });
     },
   },
 };

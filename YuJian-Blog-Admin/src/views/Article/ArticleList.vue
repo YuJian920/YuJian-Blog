@@ -2,7 +2,8 @@
   <div class="ListFather">
     <el-table
       :data="ArticleData.filter(data => !search || data.title.toLowerCase().includes(search.toLowerCase()))"
-      style="width: 100%">
+      style="width: 100%"
+    >
       <el-table-column label="文章标题" prop="title"></el-table-column>
       <el-table-column label="文章作者" prop="author"></el-table-column>
       <el-table-column align="right">
@@ -21,6 +22,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { DeleteArticle } from "@/api/article";
 
 export default {
   name: "ArticleList",
@@ -34,18 +36,32 @@ export default {
     ...mapGetters(["article"]),
   },
   methods: {
-
+    fetchArticle() {
+      this.$store.dispatch("article/getArticle").then(() => {
+        this.ArticleData = this.article;
+      });
+    },
     handleEdit(index, row) {
-      console.log(index, row);
+      // console.log(row.id);
+      this.$router.push(`/Article/${index}/Edit`);
     },
     handleDelete(index, row) {
-      console.log(index, row);
+      DeleteArticle(row.id).then((res) => {
+        if (res.code === 0) {
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
+          this.fetchArticle();
+        } else {
+          this.$message.error("文章修改失败");
+        }
+      });
+      // console.log(row.id);
     },
   },
   mounted() {
-    this.$store.dispatch("article/getArticle").then(() => {
-      this.ArticleData = this.article;
-    });
+    this.fetchArticle();
   },
 };
 </script>

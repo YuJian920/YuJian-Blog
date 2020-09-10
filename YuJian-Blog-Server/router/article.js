@@ -1,5 +1,10 @@
 const express = require("express");
-const { GetArticleList, AddArticle } = require("../service/article");
+const {
+  GetArticleList,
+  AddArticle,
+  DeleteArticle,
+  UpdataArticle,
+} = require("../service/article");
 const Result = require("../models/Result");
 
 const router = express.Router();
@@ -26,6 +31,24 @@ router.post("/create", async (req, res) => {
       }
     });
   }
+});
+
+router.delete("/list/:id", async (req, res) => {
+  await DeleteArticle(req.params.id).then(() => {
+    new Result("文章删除成功").success(res);
+  });
+});
+
+router.put("/list/:id", async (req, res) => {
+  await UpdataArticle(req.params.id, req.body.title, req.body.content).then(
+    (response) => {
+      if (!response.errno) {
+        new Result("文章更新成功").success(res);
+      } else {
+        new Result("文章更新失败").fail(res);
+      }
+    }
+  );
 });
 
 module.exports = router;
