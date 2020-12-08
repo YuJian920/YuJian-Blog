@@ -7,7 +7,7 @@ module.exports = jwt({
   // algorithms: ['HS256'],
   credentialsRequired: true,
 }).unless({
-  path: ["/", "/user/login"],
+  path: ["/", "/user/login", "/article/list"],
 });
 
 // 校验Token

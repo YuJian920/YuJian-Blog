@@ -8,7 +8,7 @@ const ArticleRouter = require("./article");
 
 const router = express.Router();
 
-// router.use(jwtAuth);
+router.use(jwtAuth);
 
 router.get("/", (req, res) => {
   res.send("Welcome Server");
