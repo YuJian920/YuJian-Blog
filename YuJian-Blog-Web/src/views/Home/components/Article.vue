@@ -1,24 +1,49 @@
 <template>
   <div class="Article">
-    <router-link
-      :to="{ path: 'Article', query: { id: '000' } }"
-      class="ArticleItem"
-    >
-      <div class="ArticleCover">
-        <img class="ArticleCoverImg" src="@/assets/images/test.png" />
-      </div>
-      <div class="ArticleInfo">
-        <div class="ArticleTitle">ArticleTest</div>
-        <div class="ArticleCont">Anything for Article</div>
-        <div class="ArticleData">2020.6.11</div>
-      </div>
-    </router-link>
+    <div v-for="(item, index) of ArticleDate" :key="item.id">
+      <router-link
+        :to="{ path: 'Article', query: { id: index } }"
+        class="ArticleItem"
+      >
+        <div class="ArticleCover">
+          <img class="ArticleCoverImg" src="@/assets/images/test.png" />
+        </div>
+        <div class="ArticleInfo">
+          <div class="ArticleTitle">{{ item.title }}</div>
+          <div class="ArticleCont">{{ item.content }}</div>
+          <div class="ArticleData">{{ item.author }}</div>
+        </div>
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
-  name: "Article"
+  name: "Article",
+  data() {
+    return {
+      ArticleDate: [],
+    };
+  },
+  computed: {
+    ...mapState(["Article"]),
+  },
+  methods: {
+    fetchArticle() {
+      this.$store.dispatch("fetchArticle").then(() => {
+        this.ArticleDate = this.Article;
+      });
+    },
+  },
+  mounted() {
+    this.fetchArticle();
+  },
+  activated() {
+    this.fetchArticle();
+  },
 };
 </script>
 
@@ -30,7 +55,7 @@ export default {
 .ArticleItem {
   display: grid;
   grid-template-columns: 720px;
-  grid-template-rows: 330px 100px;
+  grid-template-rows: 330px 110px;
   margin-top: 40px;
   border: 1px solid #757575;
   border-radius: 5px;
@@ -55,7 +80,12 @@ export default {
   font-size: 25px;
 }
 .ArticleCont {
-  font-size: 18px;
+  font-size: 15px;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 .ArticleData {
   color: gray;

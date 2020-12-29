@@ -1,26 +1,12 @@
 import axios from "axios";
-import { getToken } from "@/utils/auth";
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
-  timeout: 5000,
+  timeout: 5000
 });
 
-service.interceptors.request.use(
-  (config) => {
-    if (this.$store.state.Token) {
-      config.headers["Authorization"] = `Bearer ${getToken()}`;
-    }
-    return config;
-  },
-  (error) => {
-    console.log(error);
-    return Promise.reject(error);
-  }
-);
-
 service.interceptors.response.use(
-  (response) => {
+  response => {
     const res = response.data;
 
     // 如果返回的状态码不为0
@@ -36,7 +22,7 @@ service.interceptors.response.use(
       return res;
     }
   },
-  (error) => {
+  error => {
     return Promise.reject(error);
   }
 );

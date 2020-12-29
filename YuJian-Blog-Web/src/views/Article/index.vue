@@ -3,13 +3,7 @@
     <blog-header />
     <index-top :TopInfo="TopInfo" />
     <img class="ArticleMainCover" src="@/assets/images/test.png" />
-    <div class="ArticleMain">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse
-    </div>
+    <div class="ArticleMain">{{ TopInfo.content }}</div>
     <Footer />
   </div>
 </template>
@@ -19,31 +13,36 @@ import BlogHeader from "@/components/BlogHeader";
 import IndexTop from "@/components/Top";
 import Footer from "@/components/Footer";
 
+import { mapState } from "vuex";
+
 export default {
   name: "Article",
   components: {
     BlogHeader,
     IndexTop,
-    Footer
+    Footer,
   },
   data() {
     return {
       TopInfo: {
         title: "ArticleTest",
-        ArticleCover: "@/assets/images/test.png"
-      }
+        content: "ArticleTest",
+        ArticleCover: "@/assets/images/test.png",
+      },
     };
   },
-  methods: {
-    getArticleData: function() {
-      if (this.$route.query.id === "000") {
-        this.TopTitle = "ArticleTest";
-      }
-    }
+  computed: {
+    ...mapState(["Article"]),
   },
-  beforeMount() {
+  methods: {
+    getArticleData: function () {
+      this.TopInfo.title = this.Article[this.$route.query.id].title;
+      this.TopInfo.content = this.Article[this.$route.query.id].content;
+    },
+  },
+  created() {
     this.getArticleData();
-  }
+  },
 };
 </script>
 
