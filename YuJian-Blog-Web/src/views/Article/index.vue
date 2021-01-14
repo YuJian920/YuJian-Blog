@@ -35,14 +35,16 @@ export default {
     ...mapState(["Article"]),
   },
   methods: {
-    getArticleData: function () {
-      this.TopInfo.title = this.Article[this.$route.query.id].title;
-      this.TopInfo.content = this.Article[this.$route.query.id].content;
+    getArticleData() {
+      this.$store.dispatch("fetchArticle").then(() => {
+        this.TopInfo.title = this.Article[this.$route.query.id].title;
+        this.TopInfo.content = this.Article[this.$route.query.id].content;
+      });
     },
   },
-  created() {
+  mounted() {
     this.getArticleData();
-  },
+  }
 };
 </script>
 

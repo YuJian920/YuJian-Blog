@@ -41,9 +41,6 @@ export default {
   mounted() {
     this.fetchArticle();
   },
-  activated() {
-    this.fetchArticle();
-  },
 };
 </script>
 
