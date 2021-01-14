@@ -1,14 +1,23 @@
 const express = require("express");
 const boom = require("boom");
-const jwtAuth = require("./jwt");
+const jwt = require("express-jwt");
 
 const Result = require("../models/Result");
 const userRouter = require("./user");
 const ArticleRouter = require("./article");
+const { PRIVATE_KEY } = require("../utils/constant");
 
 const router = express.Router();
 
-router.use(jwtAuth);
+router.use(
+  jwt({
+    secret: PRIVATE_KEY,
+    algorithms: ["HS256"],
+    credentialsRequired: true,
+  }).unless({
+    path: ["/", "/user/login", "/article/list"],
+  })
+);
 
 router.get("/", (req, res) => {
   res.send("Welcome Server");
