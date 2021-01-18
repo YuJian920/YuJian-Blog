@@ -1,11 +1,24 @@
 <template>
-  <div class="CreateFather">
-    <el-form @submit.native.prevent="EditArticle" ref="form" :model="ArticleForm">
+  <div class="EditFather">
+    <el-form
+      @submit.native.prevent="EditArticle"
+      ref="form"
+      :model="ArticleForm"
+    >
       <el-form-item label="文章名称">
-        <el-input v-model="ArticleForm.title" class="ArticleTitleWidth"></el-input>
+        <el-input
+          v-model="ArticleForm.title"
+          class="ArticleTitleWidth"
+        ></el-input>
       </el-form-item>
       <el-form-item label="文章内容">
-        <el-input type="textarea" v-model="ArticleForm.content" style="width: 90%;"></el-input>
+        <article-create-editor
+          :PropsEditContentDate.sync="ArticleForm.content"
+        />
+        <el-input
+          type="textarea"
+          v-model="ArticleForm.content"
+        ></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" native-type="submit">保存修改</el-button>
@@ -17,8 +30,10 @@
 <script>
 import { mapGetters } from "vuex";
 import { UpdataArticle } from "@/api/article";
+import ArticleCreateEditor from "./ArticleCreateEditor";
 
 export default {
+  components: { ArticleCreateEditor },
   name: "ArticleEdit",
   data() {
     return {
@@ -33,10 +48,10 @@ export default {
   },
   methods: {
     fetchArticle() {
-      // console.log(this.$route.params.id);
-      this.ArticleForm.title = this.article[this.$route.params.id].title;
-      this.ArticleForm.content = this.article[this.$route.params.id].content;
-      // this.ArticleForm = this.article[this.$route.params.id];
+      this.$store.dispatch("article/getArticle").then(() => {
+        this.ArticleForm.title = this.article[this.$route.params.id].title;
+        this.ArticleForm.content = this.article[this.$route.params.id].content;
+      });
     },
     EditArticle() {
       UpdataArticle(
@@ -61,7 +76,7 @@ export default {
 };
 </script>
 <style scoped>
-.CreateFather {
+.EditFather {
   margin: 30px 0px 0px 30px;
   width: 100%;
 }

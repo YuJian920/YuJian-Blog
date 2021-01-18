@@ -10,7 +10,7 @@
         </div>
         <div class="ArticleInfo">
           <div class="ArticleTitle">{{ item.title }}</div>
-          <div class="ArticleCont">{{ item.content }}</div>
+          <!-- <div class="ArticleCont">{{ item.content }}</div> -->
           <div class="ArticleData">{{ item.author }}</div>
         </div>
       </router-link>
@@ -52,7 +52,7 @@ export default {
 .ArticleItem {
   display: grid;
   grid-template-columns: 720px;
-  grid-template-rows: 330px 110px;
+  grid-template-rows: 330px 70px;
   margin-top: 40px;
   border: 1px solid #757575;
   border-radius: 5px;

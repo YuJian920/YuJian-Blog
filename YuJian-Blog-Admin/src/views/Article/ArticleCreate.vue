@@ -1,11 +1,23 @@
 <template>
   <div class="CreateFather">
-    <el-form @submit.native.prevent="createArticle" ref="form" :model="ArticleForm">
+    <el-form
+      @submit.native.prevent="createArticle"
+      ref="form"
+      :model="ArticleForm"
+    >
       <el-form-item label="文章名称">
-        <el-input v-model="ArticleForm.title" class="ArticleTitleWidth"></el-input>
+        <el-input v-model="ArticleForm.title" class="ArticleTitleWidth" />
       </el-form-item>
       <el-form-item label="文章内容">
-        <el-input type="textarea" v-model="ArticleForm.content" style="width: 90%;"></el-input>
+        <article-create-editor
+          :PropsEditContentDate.sync="ArticleForm.content"
+        />
+        <!-- <el-form-item label="HTML"></el-form-item> -->
+        <el-input
+          v-model="ArticleForm.content"
+          type="textarea"
+          style="display: none"
+        />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" native-type="submit">立即创建</el-button>
@@ -16,8 +28,10 @@
 
 <script>
 import { AddArticle } from "@/api/article";
+import ArticleCreateEditor from "./ArticleCreateEditor";
 
 export default {
+  components: { ArticleCreateEditor },
   name: "ArticleCreate",
   data() {
     return {

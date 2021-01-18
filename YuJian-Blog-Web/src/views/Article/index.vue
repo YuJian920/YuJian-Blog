@@ -3,7 +3,7 @@
     <blog-header />
     <index-top :TopInfo="TopInfo" />
     <img class="ArticleMainCover" src="@/assets/images/test.png" />
-    <div class="ArticleMain">{{ TopInfo.content }}</div>
+    <div class="ArticleMain" v-html="TopInfo.content"></div>
     <Footer />
   </div>
 </template>
@@ -44,7 +44,7 @@ export default {
   },
   mounted() {
     this.getArticleData();
-  }
+  },
 };
 </script>
 
@@ -56,7 +56,6 @@ export default {
   width: 800px;
 }
 .ArticleMain {
-  display: flex;
   margin: 0 auto;
   background-color: #ffffff;
   border: 1px solid #000000;
