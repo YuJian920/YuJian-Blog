@@ -22,8 +22,5 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
-#LOOOO
-YuJian-Blog开发日志.md
-Push时注意.md
-Test.http
-YuJian-Blog-Server/db/config.js
+#Dev ignore
+YuJianBlogX 开发日志.md

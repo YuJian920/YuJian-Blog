@@ -1,16 +1,27 @@
-# YuJian-Blog
+# YuJianBlog-X Remake 重构 
 
-### 基于Vue和Express的全栈博客系统。
+## 基于 React 的全栈博客系统。
 
-基础博客功能实现：
+### 写在前面
 
-- [x] 基础的博客前端搭建
-- [x] 基础的后端增删改查
-- [x] 博客前端的数据获取
-- [x] 实现富文本编辑
+这是一次基于原来的 Vue 全家桶 + Express 全栈博客项目的彻底重构，前端从 Vue 框架换到 React 框架，并且全部用 Hook 写法
 
-进阶功能实现：
+### 博客前端 YuJianBlog-Web 技术栈
 
-- [ ] 使用ECharts.js实现后台管理系统数据可视化
-- [ ] 使用Animes.js完善动画效果
+- React
+- React Redux
+- React Router
+- Redux
+- Axios
+- Vite
 
+### 博客管理后台 YuJianBlog-Admin 技术栈
+
+- React
+- React Redux
+- React Router
+- Redux
+- Axios
+- Vite
+- Tailwind
+- Material-UI
