@@ -1,7 +1,14 @@
 import React from "react";
+import ArticleBox from "../../components/ArticleBox";
 
 const Home = () => {
-  return <div>Hello Vite And React</div>;
+  return (
+    <div className="container mx-auto">
+      <ArticleBox />
+      <ArticleBox />
+      <ArticleBox />
+    </div>
+  );
 };
 
 export default Home;

@@ -14,6 +14,7 @@
 - Redux
 - Axios
 - Vite
+- Tailwind
 
 ### 博客管理后台 YuJianBlog-Admin 技术栈
 
