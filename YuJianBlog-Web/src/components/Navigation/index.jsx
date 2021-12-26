@@ -17,15 +17,17 @@ const Navigation = (props) => {
   return (
     <header className="body-font font-custom">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <a className="dark:text-gray-600 flex title-font font-medium items-center mb-4 md:mb-0">
+        <a className="dark:text-white flex title-font font-medium items-center mb-4 md:mb-0">
           <img
             className="w-14 h-14 p-2 rounded-full"
             src={getImageUrl("images", "YuJianLogo.png")}
             alt="YuJianLogo"
           />
-          <span className="text-xl">YuJian's Blog</span>
+          <Link to="/">
+            <span className="text-xl">YuJian's Blog</span>
+          </Link>
         </a>
-        <nav className="dark:text-gray-600 md:ml-auto flex flex-wrap items-center text-base justify-center">
+        <nav className="dark:text-white md:ml-auto flex flex-wrap items-center text-base justify-center">
           {linkMap.map((linkItem) => {
             return (
               <Link className="mr-5" to={linkItem.path} key={linkItem.name}>

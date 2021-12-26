@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import Home from "./Home";
 import About from "./About";
+import Article from "./Article";
 import Routes from "../utils/routes";
 
 const App = () => {
@@ -15,6 +16,9 @@ const App = () => {
         </Route>
         <Route path="/About">
           <About />
+        </Route>
+        <Route path="/Article">
+          <Article />
         </Route>
         {/* <Route>
           <NotFound />
