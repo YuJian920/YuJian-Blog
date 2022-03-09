@@ -7,28 +7,37 @@ const sequelize = new Sequelize(dbName, user, password, {
   dialect: "mysql",
   host,
   port,
+  logging: true,
+  timezone: "+08:00",
   define: {
     timestamps: true,
+    paranoid: true,
+    // underscored: true,
+    freezeTableName: true,
   },
 });
 
 sequelize
   .authenticate()
   .then(() => {
-    console.log("Connection has been established successfully.");
+    console.log("数据库连接成功");
   })
   .catch((err) => {
-    console.log("Unable to connect to the database", err);
+    console.log("数据库连接错误", err);
   });
 
 // 根据 model自动创建表
 sequelize
   .sync()
   .then(() => {
-    console.log("init db ok");
+    console.log("初始化数据库成功");
   })
   .catch((err) => {
-    console.log("init db error", err);
+    console.log("初始化数据库错误", err);
   });
 
-module.exports = sequelize
+// sequelize.sync({
+//   force: true,
+// });
+
+module.exports = sequelize;
