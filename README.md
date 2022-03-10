@@ -10,8 +10,6 @@
 
 - React
 - React Redux
-- React Router
-- Redux
 - Axios
 - Vite
 - Tailwind
@@ -20,9 +18,12 @@
 
 - React
 - React Redux
-- React Router
-- Redux
 - Axios
 - Vite
 - Tailwind
-- Material-UI
+- Arco Design
+
+### 博客管理后台 YuJianBlog-Server 技术栈
+
+- Koa
+- Sequelize
