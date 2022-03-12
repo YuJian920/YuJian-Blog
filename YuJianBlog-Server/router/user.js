@@ -1,7 +1,8 @@
 const Router = require("koa-router");
 const User = require("../models/user");
-const { Success } = require("../utils/exception");
+const { Success, Fail } = require("../utils/exception");
 const { generateToken } = require("../utils");
+const jwtAuth = require("../middlewares/tokenAuth");
 
 const router = new Router({ prefix: "/api/user" });
 
@@ -15,6 +16,10 @@ router.post("/login", async (ctx) => {
   const { body } = ctx.request;
   const userInfo = await User.getUserData(body.username, body.password);
   throw new Success("登录成功", { token: generateToken(userInfo.id) });
+});
+
+router.post("/verify", jwtAuth, async (ctx) => {
+  throw new Fail("验证成功");
 });
 
 module.exports = router;
