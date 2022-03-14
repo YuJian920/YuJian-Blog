@@ -6,7 +6,7 @@ const { Fail } = require("../utils/exception");
 class User extends Model {
   static async getUserData(username, password) {
     const userInfo = await User.findOne({ where: { username } });
-    const correct = await bcrypt.compare(password, userInfo.password);
+    const correct = await bcrypt.compare(password, userInfo?.password || "");
     if (!correct) throw new Fail("密码错误");
     else return userInfo;
   }
