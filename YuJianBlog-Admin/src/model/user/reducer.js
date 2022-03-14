@@ -10,7 +10,7 @@ export default (state = defaultState, action) => {
     case actionTypes.USER_SET_TOKEN:
       return { ...state, token: action.token };
     case actionTypes.USER_RESET_TOKEN:
-      return { ...defaultState };
+      return { ...defaultState, token: "" };
     default:
       return state;
   }

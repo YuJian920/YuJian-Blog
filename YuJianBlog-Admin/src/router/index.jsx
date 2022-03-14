@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 import Login from "@/pages/Login";
+import Dashboard from "@/pages/Dashboard";
 import Layout from "@/components/Layout";
 
 const Router = (props) => {
@@ -17,13 +18,5 @@ const Router = (props) => {
   );
 };
 
-const mapStateToProps = ({ user }) => ({ token: user.token });
-const mapDispatchToProps = (dispatch) => ({
-  postUserLogin(params) {
-    dispatch(actions.postUserLogin(params));
-  },
-  cleanToken() {
-    dispatch(actions.cleanToken());
-  },
-});
-export default connect(mapStateToProps, mapDispatchToProps)(Router);
+const mapStateToProps = (state) => ({ token: state.user.token });
+export default connect(mapStateToProps, {})(Router);

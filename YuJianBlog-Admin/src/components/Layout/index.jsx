@@ -2,7 +2,7 @@ import React from "react";
 import { Layout, Breadcrumb } from "antd";
 import Header from "./components/Header";
 import Sider from "./components/Sider";
-import Dashboard from "@/pages/Dashboard";
+import ArticleList from "@/pages/ArticleList";
 import "./index.less";
 
 const { Content } = Layout;
@@ -26,7 +26,7 @@ const PageLayout = () => {
             className="pageLayout__content-box"
             style={{ padding: 24, margin: 0, minHeight: 280 }}
           >
-            <Dashboard />
+            <ArticleList />
           </Content>
         </Layout>
       </Layout>

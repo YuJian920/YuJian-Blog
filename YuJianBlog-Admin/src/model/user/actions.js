@@ -19,6 +19,6 @@ export const postUserLogin = (params) => async (dispatch) => {
 };
 
 export const cleanToken = () => (dispatch) => {
-  dispatch(cleanUserToken());
   CookieHelper.delete();
+  dispatch(cleanUserToken());
 };
