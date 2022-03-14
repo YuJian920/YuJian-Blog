@@ -3,26 +3,41 @@ import { connect } from "react-redux";
 import { Button } from "antd";
 import * as actions from "@model/user/actions";
 
+import { verifyLogin } from "../../service/user";
+
 const Dashboard = (props) => {
-  const { postUserLogin  } = props
-  const onLogin = async () => {
-    const abc = await postUserLogin({
+  const { postUserLogin, cleanToken } = props;
+
+  const onLogin = () => {
+    postUserLogin({
       username: "YuJian",
       password: "123456789",
     });
-    console.log(abc);
   };
+
+  const onVerify = async () => {
+    const res = await verifyLogin();
+    console.log("onVerify", res);
+  };
+
+  const onClean = () => cleanToken();
+
   return (
     <div>
       <Button onClick={() => onLogin()}>Login</Button>
+      <Button onClick={() => onVerify()}>Verify</Button>
+      <Button onClick={() => onClean()}>Clean</Button>
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({ token: state.token });
+const mapStateToProps = (state) => ({ token: state.user.token });
 const mapDispatchToProps = (dispatch) => ({
   postUserLogin(params) {
     dispatch(actions.postUserLogin(params));
+  },
+  cleanToken() {
+    dispatch(actions.cleanToken());
   },
 });
 
