@@ -38,7 +38,7 @@ router.put("/update", jwtAuth, async (ctx) => {
   throw new Success("修改成功");
 });
 
-router.get("/", async (ctx) => {
+router.get("/", async () => {
   const articleList = await Article.findArticle();
   throw new Success("文章获取成功", articleList);
 });
