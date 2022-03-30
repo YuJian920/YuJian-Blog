@@ -1,22 +1,33 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { connect } from "react-redux";
-import Login from "@/pages/Login";
-import Dashboard from "@/pages/Dashboard";
-import Layout from "@/components/Layout";
+import Login from "../pages/Login";
+import Layout from "../pages/Layout";
+import Dashboard from "../pages/Dashboard";
+import ArticleList from "../pages/ArticleList";
+import ArticleEdit from "../pages/ArticleEdit";
 
-const Router = (props) => {
-  const { token } = props;
-  const renderRouter = token ? <Layout /> : <Navigate to="/login" />;
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/login" element={<Login />} />
-        <Route path="/" element={renderRouter} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
+const routerConfig = [
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/Dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "/Article/List",
+        element: <ArticleList />,
+      },
+      {
+        path: "/Article/Edit",
+        element: <ArticleEdit />,
+      },
+    ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+];
 
-const mapStateToProps = (state) => ({ token: state.user.token });
-export default connect(mapStateToProps, {})(Router);
+export default routerConfig;

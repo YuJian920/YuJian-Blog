@@ -10,6 +10,9 @@ class User extends Model {
     if (!correct) throw new Fail("密码错误");
     else return userInfo;
   }
+  static async getUserList() {
+    return await User.findAll();
+  }
 }
 
 User.init(

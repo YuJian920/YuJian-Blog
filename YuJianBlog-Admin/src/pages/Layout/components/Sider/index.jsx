@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import {
   BookOutlined,
@@ -20,14 +21,14 @@ const pageSider = () => {
         style={{ height: "100%", borderRight: 0 }}
       >
         <Menu.Item key="1" icon={<DashboardOutlined />}>
-          Dashboard
+          <Link to="/">Dashboard</Link>
         </Menu.Item>
         <SubMenu key="2" icon={<BookOutlined />} title="博客管理">
           <Menu.Item key="2-1" icon={<HighlightOutlined />}>
-            新建文章
+            <Link to="/Article/Edit">新建文章</Link>
           </Menu.Item>
           <Menu.Item key="2-2" icon={<FileSearchOutlined />}>
-            文章列表
+            <Link to="/Article/List">文章列表</Link>
           </Menu.Item>
         </SubMenu>
       </Menu>

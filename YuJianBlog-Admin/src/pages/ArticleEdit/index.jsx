@@ -1,7 +1,7 @@
 import React from "react";
 
 const ArticleEdit = () => {
-  return <div></div>;
+  return <div>ArticleEdit</div>;
 };
 
 export default ArticleEdit;

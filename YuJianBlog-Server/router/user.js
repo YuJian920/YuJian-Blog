@@ -18,6 +18,11 @@ router.post("/login", async (ctx) => {
   throw new Success("登录成功", { token: generateToken(userInfo.id) });
 });
 
+router.get("/list", jwtAuth, async () => {
+  const userList = await User.getUserList();
+  throw new Success("获取成功", userList);
+});
+
 router.post("/verify", jwtAuth, async (ctx) => {
   throw new Fail("验证成功");
 });

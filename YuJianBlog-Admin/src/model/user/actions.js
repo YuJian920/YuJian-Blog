@@ -11,6 +11,10 @@ export const cleanUserToken = () => ({
   type: actionTypes.USER_RESET_TOKEN,
 });
 
+export const setUserList = () => ({
+  type: actionTypes.USER_SET_LIST,
+});
+
 export const postUserLogin = (params) => async (dispatch) => {
   const res = await service.postUserLogin(params);
   dispatch(setUserToken(res.data.token));
@@ -18,7 +22,13 @@ export const postUserLogin = (params) => async (dispatch) => {
   return res;
 };
 
-export const cleanToken = () => (dispatch) => {
+export const cleanToken = () => async (dispatch) => {
   CookieHelper.delete();
   dispatch(cleanUserToken());
+};
+
+export const getUserList = () => async (dispatch) => {
+  const res = await service.getUserList();
+  dispatch(setUserList(res.data));
+  return res.data;
 };

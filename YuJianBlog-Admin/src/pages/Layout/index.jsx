@@ -1,13 +1,14 @@
 import React from "react";
-import { Layout, Breadcrumb } from "antd";
+import { Outlet, useLocation } from "react-router-dom";
+import { Layout } from "antd";
 import Header from "./components/Header";
 import Sider from "./components/Sider";
-import ArticleList from "@/pages/ArticleList";
+import Dashboard from "../Dashboard";
 import "./index.less";
 
-const { Content } = Layout;
-
 const PageLayout = () => {
+  const { pathname } = useLocation();
+
   return (
     <Layout className="pageLayout">
       <Header />
@@ -17,17 +18,12 @@ const PageLayout = () => {
           className="pageLayout__content"
           style={{ padding: "0 24px 24px" }}
         >
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
-          <Content
+          <Layout.Content
             className="pageLayout__content-box"
             style={{ padding: 24, margin: 0, minHeight: 280 }}
           >
-            <ArticleList />
-          </Content>
+            {pathname === "/" ? <Dashboard /> : <Outlet />}
+          </Layout.Content>
         </Layout>
       </Layout>
     </Layout>

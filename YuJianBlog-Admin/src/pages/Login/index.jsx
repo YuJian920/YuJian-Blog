@@ -68,7 +68,7 @@ const mapStateToProps = (state) => ({ token: state.user.token });
 const mapDispatchToProps = (dispatch) => ({
   postUserLogin(params) {
     return dispatch(actions.postUserLogin(params));
-  },
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

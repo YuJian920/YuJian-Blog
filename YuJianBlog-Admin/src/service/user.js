@@ -11,3 +11,7 @@ export const postUserLogin = ({ username, password }) => {
 export const verifyLogin = () => {
   return request.post("/api/user/verify");
 };
+
+export const getUserList = () => {
+  return request.get("/api/user/list");
+};
