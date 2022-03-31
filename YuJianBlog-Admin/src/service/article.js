@@ -14,8 +14,8 @@ export const postArticle = (params) => {
  * @param {*} params
  * @returns
  */
-export const deleteArticle = ({ articleId }) => {
-  return request.delete("/api/article/delete", { articleId });
+export const deleteArticle = (params) => {
+  return request.post("/api/article/delete", params);
 };
 
 /**

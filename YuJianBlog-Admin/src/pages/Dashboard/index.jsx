@@ -23,11 +23,12 @@ const Dashboard = (props) => {
   const onClean = () => cleanToken();
 
   return (
-    <div>
+    <>
+      <h1>A Simple Blog Admin base React</h1>
       <Button onClick={() => onLogin()}>Login</Button>
       <Button onClick={() => onVerify()}>Verify</Button>
       <Button onClick={() => onClean()}>Clean</Button>
-    </div>
+    </>
   );
 };
 

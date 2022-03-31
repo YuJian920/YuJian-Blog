@@ -18,8 +18,9 @@ router.post("/add", jwtAuth, async (ctx) => {
   throw new Success("创建成功");
 });
 
-router.delete("/delete", jwtAuth, async (ctx) => {
+router.post("/delete", jwtAuth, async (ctx) => {
   const { body } = ctx.request;
+  if (!body?.articleId) throw new Fail("文章ID无效");
   await Article.destroy({ where: { id: body.articleId } });
   throw new Success("删除成功");
 });
