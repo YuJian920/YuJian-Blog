@@ -18,6 +18,8 @@
 
 - React
 - React Redux
+- React Router V6
+- React Query
 - Axios
 - Vite
 - Ant Design
@@ -26,3 +28,8 @@
 
 - Koa
 - Sequelize
+
+## 更新日志
+
+### 2022-03-31
+- 后台管理完成基础文章增删改查功能
