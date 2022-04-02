@@ -11,7 +11,7 @@ const routerConfig = [
     element: <Layout />,
     children: [
       {
-        path: "/Dashboard",
+        path: "/",
         element: <Dashboard />,
       },
       {

@@ -1,14 +1,11 @@
 import React from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Layout } from "antd";
 import Header from "./components/Header";
 import Sider from "./components/Sider";
-import Dashboard from "../Dashboard";
 import "./index.less";
 
 const PageLayout = () => {
-  const { pathname } = useLocation();
-
   return (
     <Layout className="pageLayout">
       <Header />
@@ -22,7 +19,7 @@ const PageLayout = () => {
             className="pageLayout__content-box"
             style={{ padding: 24, margin: 0, minHeight: 280 }}
           >
-            {pathname === "/" ? <Dashboard /> : <Outlet />}
+            <Outlet />
           </Layout.Content>
         </Layout>
       </Layout>

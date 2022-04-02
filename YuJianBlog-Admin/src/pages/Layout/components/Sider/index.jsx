@@ -26,7 +26,7 @@ const pageSider = () => {
         style={{ height: "100%", borderRight: 0 }}
       >
         <Menu.Item key="/" icon={<DashboardOutlined />}>
-          <Link to="/Dashboard">Dashboard</Link>
+          <Link to="/">Dashboard</Link>
         </Menu.Item>
         <Menu.SubMenu key="/Article" icon={<BookOutlined />} title="博客管理">
           <Menu.Item key="/Article/List" icon={<FileSearchOutlined />}>
