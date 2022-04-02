@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Header, Container, Img, Span, LeftBox, Nav, Svgg } from "./style";
-import YuJianLogo from "../../assets/images/YuJianLogo.png";
+import YuJianLogo from "../../assets/images/YuJianLogo.webp";
 
 const Routes = [
   { name: "首页", path: "/" },
