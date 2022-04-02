@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Header, Container, Img, Span, LeftBox, Nav, Svgg } from "./style";
-import { getImageUrl } from "../../utils";
+import YuJianLogo from "../../assets/images/YuJianLogo.png";
 
 const Routes = [
   { name: "首页", path: "/" },
@@ -24,7 +24,7 @@ const Navigation = () => {
     <Header>
       <Container>
         <LeftBox>
-          <Img src={getImageUrl("images", "YuJianLogo.png")} alt="YuJianLogo" />
+          <Img src={YuJianLogo} alt="YuJianLogo" />
           <Link style={{ marginLeft: "1rem" }} to="/">
             <Span style={{ fontSize: "1.7rem" }}>YuJian's Blog</Span>
           </Link>
