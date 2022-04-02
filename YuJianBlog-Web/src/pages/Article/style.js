@@ -50,4 +50,7 @@ export const Conten = styled.div`
   padding-bottom: 4rem;
   overflow-wrap: break-word;
   font-size: 1.5rem;
+  img {
+    width: 100%;
+  }
 `;
