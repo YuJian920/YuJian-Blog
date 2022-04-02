@@ -1,5 +1,6 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
+import useDocumentTitle from "../../hook/useDocumentTitle";
 import {
   Container,
   ArticleInfo,
@@ -16,6 +17,8 @@ import Wallhaven from "../../assets/images/Wallhaven.jpg";
 
 const Article = () => {
   const { data, isLoading } = useArticleDetail();
+  useDocumentTitle(data?.title, false)
+
   const createTime = data?.createdAt
     ?.substring(0, data?.createdAt.length - 5)
     ?.split("T")

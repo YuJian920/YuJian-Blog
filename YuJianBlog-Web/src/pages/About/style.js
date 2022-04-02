@@ -41,6 +41,10 @@ export const P = styled.p`
   line-height: 2rem;
 `;
 
+export const P2 = styled.p`
+  font-size: 1.2rem;
+`;
+
 export const Content = styled.span`
   display: inline-block;
   height: 0.25rem;
@@ -48,5 +52,5 @@ export const Content = styled.span`
   border-radius: 0.25rem;
   background-color: rgb(99 102 241);
   margin-top: 2rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.3rem;
 `;

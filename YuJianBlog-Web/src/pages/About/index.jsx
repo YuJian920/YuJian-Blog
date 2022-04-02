@@ -1,7 +1,9 @@
 import React from "react";
-import { Section, Container, ContainerBox, Svg, P, Content } from "./style";
+import useDocumentTitle from "../../hook/useDocumentTitle";
+import { Section, Container, ContainerBox, Svg, P, P2, Content } from "./style";
 
 const About = () => {
+  useDocumentTitle("关于我", false);
   return (
     <Section>
       <Container>
@@ -35,21 +37,21 @@ const About = () => {
             <strong>我们可以卑微如尘土，但不可扭曲如蛆虫。</strong>
           </P>
           <Content />
-          <p>会敲点代码，会点C，C#，JaveScript，Python，PHP</p>
-          <p>最喜欢的Text Editor是VSCode</p>
-          <p>会剪视频加特效用着Adobe全家桶</p>
-          <p>喜欢玩游戏，经过鉴定有严重帕金森综合征</p>
-          <p>如果你也喜欢玩游戏欢迎加我为好友增加游戏难度</p>
-          <p>喜欢电脑，对一切新兴的事物感兴趣</p>
-          <p>最擅长Linux的开关机，最喜欢用rm -rf *</p>
-          <p>偶尔会抬头45°看天空，然后因为看不到路放下来</p>
-          <p>喜欢看动漫，曾经是半个死宅</p>
-          <p>
+          <P2>会敲点代码，会点C，C#，JaveScript，Python，PHP</P2>
+          <P2>最喜欢的Text Editor是VSCode</P2>
+          <P2>会剪视频加特效用着Adobe全家桶</P2>
+          <P2>喜欢玩游戏，经过鉴定有严重帕金森综合征</P2>
+          <P2>如果你也喜欢玩游戏欢迎加我为好友增加游戏难度</P2>
+          <P2>喜欢电脑，对一切新兴的事物感兴趣</P2>
+          <P2>最擅长Linux的开关机，最喜欢用rm -rf *</P2>
+          <P2>偶尔会抬头45°看天空，然后因为看不到路放下来</P2>
+          <P2>喜欢看动漫，曾经是半个死宅</P2>
+          <P2>
             接下来的学习方向会是Java，C++，人工智能等等
             <br />
             <br />
             <del>虽然人很懒，但偶尔也会往前爬几步XD</del>
-          </p>
+          </P2>
         </ContainerBox>
       </Container>
     </Section>
