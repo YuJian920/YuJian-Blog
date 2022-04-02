@@ -33,7 +33,7 @@ const Article = () => {
         <LableSpan>Posted {createTime}</LableSpan>
       </ArticleInfo>
       <ContentBox>
-        <ContentImg src={cover_url || Wallhaven} alt="Article Logo" />
+        <ContentImg src={data.cover_url || Wallhaven} alt="Article Logo" />
         <Conten>
           <ReactMarkdown components={{ code: CodeLight }}>
             {data?.content}
