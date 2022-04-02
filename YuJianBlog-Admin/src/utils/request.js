@@ -30,8 +30,9 @@ request.interceptors.response.use(
 
     // 401 Token 失效
     if (status === 401) {
-      window.location.href = "/";
       message.error(result.msg || "登录信息失效");
+      CookieHelper.delete()
+      window.location.href = "/";
     } else message.error(result.msg || "未知错误");
     return Promise.reject(result.msg || "未知错误");
   }

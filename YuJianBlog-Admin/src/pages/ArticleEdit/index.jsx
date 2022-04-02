@@ -42,7 +42,6 @@ const ArticleEdit = () => {
   const onFinish = async (value) => {
     await mutateAsync({
       ...value,
-      cover_url: "",
       content: vditorOb.getValue(),
       author: 1,
       articleId: articleInfo.id || "",
@@ -55,7 +54,7 @@ const ArticleEdit = () => {
     <div
       style={{
         display: "flex",
-        flexDirection: 'column',
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         height: "100%",
@@ -64,7 +63,11 @@ const ArticleEdit = () => {
       {pullLoading ? (
         <Spin size="large" />
       ) : (
-        <Form style={{ height: '100%', width: '80%' }} form={form} onFinish={onFinish}>
+        <Form
+          style={{ height: "100%", width: "80%" }}
+          form={form}
+          onFinish={onFinish}
+        >
           <Form.Item
             name="title"
             rules={[{ required: true, message: "请输入文章标题" }]}
@@ -76,6 +79,9 @@ const ArticleEdit = () => {
             rules={[{ required: true, message: "请输入文章描述" }]}
           >
             <Input placeholder="请输入文章描述" />
+          </Form.Item>
+          <Form.Item name="cover_url">
+            <Input placeholder="文章图片URL" />
           </Form.Item>
           <div id="vditor" />
           <Form.Item style={{ textAlign: "right", marginTop: 20 }}>

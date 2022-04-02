@@ -6,14 +6,7 @@ import * as actions from "@model/user/actions";
 import { verifyLogin } from "../../service/user";
 
 const Dashboard = (props) => {
-  const { postUserLogin, cleanToken } = props;
-
-  const onLogin = () => {
-    postUserLogin({
-      username: "YuJian",
-      password: "123456789",
-    });
-  };
+  const { cleanToken } = props;
 
   const onVerify = async () => {
     const res = await verifyLogin();
@@ -25,7 +18,6 @@ const Dashboard = (props) => {
   return (
     <>
       <h1>A Simple Blog Admin base React</h1>
-      <Button onClick={() => onLogin()}>Login</Button>
       <Button onClick={() => onVerify()}>Verify</Button>
       <Button onClick={() => onClean()}>Clean</Button>
     </>

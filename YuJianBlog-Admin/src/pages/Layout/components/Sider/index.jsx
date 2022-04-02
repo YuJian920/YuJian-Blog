@@ -10,6 +10,7 @@ import {
 import "../../index.less";
 
 const pageSider = () => {
+  const [collapsed, setCollapsed] = useState(false);
   const [selectedKeys, setSelectedKeys] = useState(["Dashboard"]);
   const { pathname } = useLocation();
 
@@ -18,7 +19,12 @@ const pageSider = () => {
   }, [pathname]);
 
   return (
-    <Layout.Sider width={200} collapsed={false}>
+    <Layout.Sider
+      width={200}
+      collapsed={collapsed}
+      collapsible
+      onCollapse={() => setCollapsed((collapsed) => !collapsed)}
+    >
       <Menu
         mode="inline"
         defaultSelectedKeys={selectedKeys}
