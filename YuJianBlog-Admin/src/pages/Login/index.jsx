@@ -26,7 +26,7 @@ const Login = (props) => {
       <div className="login__box flexEle">
         <Form
           className="login__box-form"
-          initialValues={{ username: "YuJian", password: "123456789" }}
+          initialValues={{ username: "", password: "" }}
           onFinish={onLogin}
         >
           <Item
@@ -68,7 +68,7 @@ const mapStateToProps = (state) => ({ token: state.user.token });
 const mapDispatchToProps = (dispatch) => ({
   postUserLogin(params) {
     return dispatch(actions.postUserLogin(params));
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
