@@ -18,12 +18,23 @@ export const ArticleInfo = styled.div`
   margin-top: 3.2rem;
   margin-bottom: 3.2rem;
   width: 100rem;
+
+  @media (max-width: 500px) {
+    margin-top: 1rem;
+    width: 30rem;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 export const TitleSpan = styled.span`
   font-size: 3.6rem;
   line-height: 4rem;
   margin-bottom: 1.2rem;
+
+  @media (max-width: 500px) {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
 `;
 
 export const LableSpan = styled.span`
@@ -35,6 +46,11 @@ export const ContentBox = styled.div`
   background-color: rgb(241 245 249);
   border-radius: 0.8rem;
   width: 100rem;
+
+  @media (max-width: 500px) {
+    margin-top: 1rem;
+    width: 35rem;
+  }
 `;
 
 export const ContentImg = styled.img`
