@@ -17,7 +17,7 @@ import Wallhaven from "../../assets/images/Wallhaven.jpg";
 
 const Article = () => {
   const { data, isLoading } = useArticleDetail();
-  useDocumentTitle(data?.title, false)
+  useDocumentTitle(data?.title || "YuJian's Blog", false)
 
   const createTime = data?.createdAt
     ?.substring(0, data?.createdAt.length - 5)
