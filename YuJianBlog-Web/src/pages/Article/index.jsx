@@ -17,7 +17,7 @@ import Wallhaven from "../../assets/images/Wallhaven.jpg";
 
 const Article = () => {
   const { data, isLoading } = useArticleDetail();
-  useDocumentTitle(data?.title || "YuJian's Blog", false)
+  useDocumentTitle(data?.title || "YuJian's Blog", false);
 
   const createTime = data?.createdAt
     ?.substring(0, data?.createdAt.length - 5)
@@ -33,7 +33,7 @@ const Article = () => {
         <LableSpan>Posted {createTime}</LableSpan>
       </ArticleInfo>
       <ContentBox>
-        <ContentImg src={Wallhaven} alt="Article Logo" />
+        <ContentImg src={cover_url || Wallhaven} alt="Article Logo" />
         <Conten>
           <ReactMarkdown components={{ code: CodeLight }}>
             {data?.content}
