@@ -1,0 +1,29 @@
+@import url("./normalize.css");
+
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html body #root .App {
+  min-height: 100vh;
+  background-color: #fafafa;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+img {
+  vertical-align: top;
+}
+
+.flexElement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

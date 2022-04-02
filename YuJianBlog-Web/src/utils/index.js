@@ -7,3 +7,16 @@
 export const getImageUrl = (dist, name) => {
   return new URL(`../assets/${dist}/${name}`, import.meta.url).href;
 };
+
+/**
+ * 获取对象中的键值对
+ * @param {*} obj
+ * @param {*} keys
+ * @returns
+ */
+export const subset = (obj, keys) => {
+  const filteredEntries = Object.entries(obj).filter(([key]) =>
+    keys.includes(key)
+  );
+  return Object.fromEntries(filteredEntries);
+};

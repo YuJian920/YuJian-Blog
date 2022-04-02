@@ -1,30 +1,14 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navigation from "../components/Navigation";
-import Home from "./Home";
-import About from "./About";
-import Article from "./Article";
-import Routes from "../utils/routes";
+import React, { Suspense } from "react";
+import { useRoutes } from "react-router-dom";
+import routerConfig from "../router";
+import Loading from "../components/Loading";
 
 const App = () => {
+  const routerMap = useRoutes(routerConfig);
   return (
-    <Router>
-      <Navigation linkMap={Routes} />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/About">
-          <About />
-        </Route>
-        <Route path="/Article">
-          <Article />
-        </Route>
-        {/* <Route>
-          <NotFound />
-        </Route> */}
-      </Switch>
-    </Router>
+    <Suspense fallback={<Loading />} className="App">
+      {routerMap}
+    </Suspense>
   );
 };
 

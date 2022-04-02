@@ -9,10 +9,10 @@
 ### 博客前端 YuJianBlog-Web 技术栈
 
 - React
-- React Redux
-- Axios
+- React Router V6
+- React Query
+- Emotion
 - Vite
-- Tailwind
 
 ### 博客管理后台 YuJianBlog-Admin 技术栈
 
@@ -33,3 +33,5 @@
 
 ### 2022-03-31
 - 后台管理完成基础文章增删改查功能
+### 2022-04-01
+- Web完成基础文章获取和加载

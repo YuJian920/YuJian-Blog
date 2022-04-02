@@ -82,7 +82,7 @@ const ArticleList = () => {
             width: 165,
           },
         ]}
-        loading={articleLoading && userLoading}
+        loading={articleLoading || userLoading}
         dataSource={articleList?.data || []}
         rowKey="id"
       />
