@@ -25,3 +25,5 @@ pnpm-debug.log*
 #Dev ignore
 YuJianBlogX 开发日志.md
 YuJianBlog-Server/utils/config.js
+YuJianBlog-Admin/dist
+YuJianBlog-Web/dist
