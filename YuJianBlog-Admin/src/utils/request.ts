@@ -7,8 +7,9 @@ const request = axios.create({ baseURL, timeout: 5000 });
 
 request.interceptors.request.use(
   (config) => {
-    if (CookieHelper.get())
-      config.headers.authorization = `Bearer ${CookieHelper.get()}`;
+    if (CookieHelper.get()) {
+      config.headers = { authorization: `Bearer ${CookieHelper.get()}` };
+    }
     return config;
   },
   (error) => Promise.reject(error)
@@ -31,7 +32,7 @@ request.interceptors.response.use(
     // 401 Token 失效
     if (status === 401) {
       message.error(result.msg || "登录信息失效");
-      CookieHelper.delete()
+      CookieHelper.delete();
       window.location.href = "/";
     } else message.error(result.msg || "未知错误");
     return Promise.reject(result.msg || "未知错误");

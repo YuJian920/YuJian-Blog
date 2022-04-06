@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import { Form, Button, Input } from "antd";
 import { UserOutlined, KeyOutlined } from "@ant-design/icons";
-import { connect } from "react-redux";
+import { connect, ConnectedProps } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import * as actions from "@model/user/actions";
+import * as actions from "../../model/user/actions";
 import "./index.less";
+import { User } from "../../type";
 
 const { Password } = Input;
 const { Item } = Form;
 
-const Login = (props) => {
+interface Props extends PropsFromRedux {}
+
+const Login = (props: Props) => {
   const { postUserLogin } = props;
 
   const [loginLoading, setLoginLoading] = useState(false);
   const navigate = useNavigate();
 
-  const onLogin = async (values) => {
+  const onLogin = async (values: User) => {
     setLoginLoading(true);
     await postUserLogin(values);
     navigate("/");
@@ -64,11 +67,16 @@ const Login = (props) => {
   );
 };
 
+// @ts-ignore
 const mapStateToProps = (state) => ({ token: state.user.token });
+// @ts-ignore
 const mapDispatchToProps = (dispatch) => ({
-  postUserLogin(params) {
+  postUserLogin(params: User) {
     return dispatch(actions.postUserLogin(params));
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+const connector = connect(mapStateToProps, mapDispatchToProps)
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+export default connector(Login);

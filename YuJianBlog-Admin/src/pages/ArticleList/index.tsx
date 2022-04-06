@@ -11,11 +11,11 @@ const ArticleList = () => {
   const { data: userList, isLoading: userLoading } = useUser();
   const navigate = useNavigate();
 
-  const onArticleEdit = (articleId) => {
+  const onArticleEdit = (articleId: number) => {
     navigate(`/Article/Edit?articleId=${articleId}`);
   };
 
-  const onArtcileDelete = async (articleId) => {
+  const onArtcileDelete = async (articleId: number) => {
     await mutateAsync(articleId);
   };
 
@@ -45,6 +45,7 @@ const ArticleList = () => {
             render: (value, data) => {
               return (
                 <>
+                  {/* @ts-ignore */}
                   {userList?.data?.find((item) => item.id === value)
                     ?.username || "已注销"}
                 </>

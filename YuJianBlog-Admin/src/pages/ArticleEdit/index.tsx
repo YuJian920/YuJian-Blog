@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, Input, Spin } from "antd";
 import Vditor from "vditor";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,7 @@ import {
 } from "../../hook/useArticle";
 import { useForm } from "antd/lib/form/Form";
 import "vditor/dist/index.css";
+import { Artcile } from "../../type";
 
 const ArticleEdit = () => {
   const { data, isLoading: pullLoading } = useArticleInfo();
@@ -17,7 +18,7 @@ const ArticleEdit = () => {
     ? useArticleEdit
     : useArticleAdd;
 
-  const [vditorOb, setVditorOb] = useState();
+  const [vditorOb, setVditorOb] = useState<Vditor>();
   const { mutateAsync, isLoading } = useMutate();
 
   const [form] = useForm();
@@ -28,7 +29,7 @@ const ArticleEdit = () => {
       const vditor = new Vditor("vditor", {
         after: () => {
           vditor.setValue(articleInfo.content || "");
-          setVditorOb(vditor);
+          setVditorOb(vditor || "");
         },
       });
     }
@@ -39,11 +40,11 @@ const ArticleEdit = () => {
     form.setFieldsValue(articleInfo);
   }, [articleInfo, form]);
 
-  const onFinish = async (value) => {
+  const onFinish = async (value: Artcile) => {
     await mutateAsync({
       ...value,
-      content: vditorOb.getValue(),
-      author: 1,
+      content: vditorOb?.getValue() || "",
+      author: "1",
       articleId: articleInfo.id || "",
     });
     form.resetFields();

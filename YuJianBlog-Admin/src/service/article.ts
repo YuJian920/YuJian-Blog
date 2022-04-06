@@ -1,3 +1,4 @@
+import { Artcile } from "../type";
 import request from "../utils/request";
 
 /**
@@ -5,7 +6,7 @@ import request from "../utils/request";
  * @param {*} params
  * @returns
  */
-export const postArticle = (params) => {
+export const postArticle = (params: Artcile) => {
   return request.post("/api/article/add", params);
 };
 
@@ -14,8 +15,8 @@ export const postArticle = (params) => {
  * @param {*} params
  * @returns
  */
-export const deleteArticle = (params) => {
-  return request.post("/api/article/delete", params);
+export const deleteArticle = (id: number) => {
+  return request.post("/api/article/delete", id);
 };
 
 /**
@@ -23,7 +24,7 @@ export const deleteArticle = (params) => {
  * @param {*} params
  * @returns
  */
-export const putArticle = (params) => {
+export const putArticle = (params: Artcile) => {
   return request.put("/api/article/update", params);
 };
 
@@ -40,6 +41,6 @@ export const getArticleList = () => {
  * @param {*} param
  * @returns
  */
-export const getArticleInfo = ({ articleId }) => {
+export const getArticleInfo = ({ articleId }: { articleId: string }) => {
   return request.get(`/api/article/${articleId}`);
 };

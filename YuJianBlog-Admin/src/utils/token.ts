@@ -4,7 +4,7 @@ class CookieHelper {
   static get() {
     return Cookies.get("token");
   }
-  static set(token) {
+  static set(token: string) {
     return Cookies.set("token", token);
   }
   static delete() {

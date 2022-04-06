@@ -7,6 +7,7 @@ import {
   getArticleInfo,
   deleteArticle,
 } from "../service/article";
+import { Artcile } from "../type";
 
 /**
  * 获取 文章列表
@@ -22,7 +23,7 @@ export const useArticleList = () => {
  */
 export const useArticleAdd = () => {
   const queryClient = useQueryClient();
-  return useMutation((params) => postArticle(params), {
+  return useMutation((params: Artcile) => postArticle(params), {
     onSuccess: () => queryClient.invalidateQueries("articleList"),
   });
 };
@@ -33,14 +34,14 @@ export const useArticleAdd = () => {
  */
 export const useArticleEdit = () => {
   const queryClient = useQueryClient();
-  return useMutation((params) => putArticle(params), {
+  return useMutation((params: Artcile) => putArticle(params), {
     onSuccess: () => queryClient.invalidateQueries("articleList"),
   });
 };
 
 export const useArticleDelete = () => {
   const queryClient = useQueryClient();
-  return useMutation((articleId) => deleteArticle({ articleId }), {
+  return useMutation((id: number) => deleteArticle(id), {
     onSuccess: () => queryClient.invalidateQueries("articleList"),
   });
 };
@@ -52,7 +53,7 @@ export const useArticleDelete = () => {
  */
 export const useArticleInfo = (articleId = "") => {
   const [searchParams] = useSearchParams();
-  if (!articleId) articleId = searchParams.get("articleId");
+  if (!articleId) articleId = searchParams.get("articleId") || "";
 
   return useQuery(
     ["articleInfo", { articleId }],
