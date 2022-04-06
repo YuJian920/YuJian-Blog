@@ -1,8 +1,15 @@
 import React from "react";
+import { CodeProps } from "react-markdown/lib/ast-to-react";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import { xonokai } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const CodeLight = ({ node, inline, className, children, ...props }) => {
+const CodeLight = ({
+  node,
+  inline,
+  className,
+  children,
+  ...props
+}: CodeProps) => {
   const match = /language-(\w+)/.exec(className || "");
   return !inline && match ? (
     <SyntaxHighlighter

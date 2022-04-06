@@ -13,7 +13,7 @@ const Navigation = () => {
   const [darkMode, setDarkMode] = useState(false); // 深色模式状态
 
   // 切换 深色模式
-  const _onDarkMode = (value) => {
+  const _onDarkMode = (value: boolean) => {
     value
       ? document.documentElement.classList.add("dark")
       : document.documentElement.classList.remove("dark");
@@ -33,7 +33,7 @@ const Navigation = () => {
           {linkMap.map((linkItem) => {
             return (
               <Link
-                style={{ marginRight: "1.25rem", marginLeft: '1.25rem' }}
+                style={{ marginRight: "1.25rem", marginLeft: "1.25rem" }}
                 to={linkItem.path}
                 key={linkItem.name}
               >

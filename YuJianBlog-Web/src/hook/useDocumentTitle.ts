@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 
-const useDocumentTitle = (title, keepOnUnmount) => {
+const useDocumentTitle = (title: string, keepOnUnmount: boolean) => {
   const oldTitle = useRef(document.title).current;
 
   useEffect(() => {

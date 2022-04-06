@@ -5,11 +5,7 @@ import Loading from "../components/Loading";
 
 const App = () => {
   const routerMap = useRoutes(routerConfig);
-  return (
-    <Suspense fallback={<Loading />} className="App">
-      {routerMap}
-    </Suspense>
-  );
+  return <Suspense fallback={<Loading />}>{routerMap}</Suspense>;
 };
 
 export default App;

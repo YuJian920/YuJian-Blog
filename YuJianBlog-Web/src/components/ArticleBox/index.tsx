@@ -10,8 +10,9 @@ import {
   InfoSpan,
 } from "./style";
 import Wallhaven from "../../assets/images/Wallhaven.jpg";
+import { ArticleData } from "../../type";
 
-const ArticleBox = ({ articleData = {} }) => {
+const ArticleBox = ({ articleData }: { articleData: ArticleData }) => {
   const { id, title, description, cover_url, createdAt } = articleData;
   const createTime = createdAt
     ?.substring(0, createdAt.length - 5)

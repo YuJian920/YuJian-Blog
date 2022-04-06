@@ -29,14 +29,14 @@ const Article = () => {
   ) : (
     <Container>
       <ArticleInfo>
-        <TitleSpan>{data.title}</TitleSpan>
+        <TitleSpan>{data?.title}</TitleSpan>
         <LableSpan>Posted {createTime}</LableSpan>
       </ArticleInfo>
       <ContentBox>
-        <ContentImg src={data.cover_url || Wallhaven} alt="Article Logo" />
+        <ContentImg src={data?.cover_url || Wallhaven} alt="Article Logo" />
         <Conten>
           <ReactMarkdown components={{ code: CodeLight }}>
-            {data?.content}
+            {data?.content || ""}
           </ReactMarkdown>
         </Conten>
       </ContentBox>

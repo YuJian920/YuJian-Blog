@@ -4,7 +4,7 @@
  * @param {*} name 文件名
  * @returns 图片路径
  */
-export const getImageUrl = (dist, name) => {
+export const getImageUrl = (dist: string, name: string) => {
   return new URL(`../assets/${dist}/${name}`, import.meta.url).href;
 };
 
@@ -14,7 +14,7 @@ export const getImageUrl = (dist, name) => {
  * @param {*} keys
  * @returns
  */
-export const subset = (obj, keys) => {
+export const subset = (obj: object, keys: string[]) => {
   const filteredEntries = Object.entries(obj).filter(([key]) =>
     keys.includes(key)
   );
