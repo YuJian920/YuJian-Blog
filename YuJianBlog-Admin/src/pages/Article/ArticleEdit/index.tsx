@@ -8,8 +8,8 @@ import {
   useArticleAdd,
   useArticleEdit,
   useArticleInfo
-} from "../../hook/useArticle";
-import { Artcile } from "../../type";
+} from "../../../hook/useArticle";
+import { Artcile } from "../../../type";
 import "./index.less";
 
 const ArticleEdit = () => {
@@ -49,7 +49,7 @@ const ArticleEdit = () => {
       id: articleInfo.id || "",
     });
     form.resetFields();
-    navigate("/Article/List");
+    navigate("/Blog/ArticleList");
   };
 
   return (

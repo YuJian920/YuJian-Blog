@@ -6,6 +6,7 @@ import {
   DashboardOutlined,
   HighlightOutlined,
   FileSearchOutlined,
+  DeploymentUnitOutlined,
 } from "@ant-design/icons";
 import "../../index.less";
 
@@ -34,12 +35,19 @@ const pageSider = () => {
         <Menu.Item key="/" icon={<DashboardOutlined />}>
           <Link to="/">Dashboard</Link>
         </Menu.Item>
-        <Menu.SubMenu key="/Article" icon={<BookOutlined />} title="博客管理">
-          <Menu.Item key="/Article/List" icon={<FileSearchOutlined />}>
-            <Link to="/Article/List">文章列表</Link>
+        <Menu.SubMenu
+          key="/Blog"
+          icon={<BookOutlined />}
+          title="博客管理"
+        >
+          <Menu.Item key="/Blog/ArticleList" icon={<FileSearchOutlined />}>
+            <Link to="/Blog/ArticleList">文章列表</Link>
           </Menu.Item>
-          <Menu.Item key="/Article/Edit" icon={<HighlightOutlined />}>
-            <Link to="/Article/Edit">新建文章</Link>
+          <Menu.Item key="/Blog/ArticleEdit" icon={<HighlightOutlined />}>
+            <Link to="/Blog/ArticleEdit">新建文章</Link>
+          </Menu.Item>
+          <Menu.Item key="/Blog/Custom" icon={<DeploymentUnitOutlined />}>
+            <Link to="/Blog/Custom">博客样式</Link>
           </Menu.Item>
         </Menu.SubMenu>
       </Menu>

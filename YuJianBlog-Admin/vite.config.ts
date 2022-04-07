@@ -1,8 +1,8 @@
 import { resolve } from 'path'
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { visualizer } from 'rollup-plugin-visualizer';
-// import vitePluginImp from "vite-plugin-imp";
+// import { visualizer } from 'rollup-plugin-visualizer';
+import vitePluginImp from "vite-plugin-imp";
 
 // https://vitejs.dev/config/
 export default defineConfig({

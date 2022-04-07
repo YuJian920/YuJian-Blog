@@ -1,7 +1,7 @@
 {
   "name": "yujianblog_admin",
   "description": "一个简单的基于 React 的博客后台管理系统",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

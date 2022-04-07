@@ -10,7 +10,7 @@ const ArticleList = () => {
   const navigate = useNavigate();
 
   const onArticleEdit = (articleId: number) => {
-    navigate(`/Article/Edit?articleId=${articleId}`);
+    navigate(`/Blog/ArticleEdit?articleId=${articleId}`);
   };
 
   const onArtcileDelete = async (articleId: number) => {
