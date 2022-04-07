@@ -17,7 +17,7 @@ export default (state = defaultState, action: UserAction) => {
     case USER_SET_TOKEN:
       return { ...state, token: action.payload };
     case USER_RESET_TOKEN:
-      return { ...defaultState, token: "" };
+      return { ...defaultState, token: action.payload };
     default:
       return state;
   }

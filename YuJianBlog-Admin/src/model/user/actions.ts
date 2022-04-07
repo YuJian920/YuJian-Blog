@@ -11,6 +11,7 @@ export const setUserToken = (token: string) => ({
 
 export const cleanUserToken = () => ({
   type: actionTypes.USER_RESET_TOKEN,
+  payload: ""
 });
 
 export const postUserLogin = (params: User) => async (dispatch: Dispatch) => {
