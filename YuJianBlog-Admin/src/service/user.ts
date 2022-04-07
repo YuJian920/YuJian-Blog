@@ -1,5 +1,5 @@
 import request from "../utils/request";
-import { User } from "../type";
+import { ResponseData, User } from "../type";
 
 export const postUserRegister = ({ username, password }: User) => {
   return request.post("/api/user/register", { username, password });
@@ -14,5 +14,5 @@ export const verifyLogin = () => {
 };
 
 export const getUserList = () => {
-  return request.get("/api/user/list");
+  return request.get<any, ResponseData<User>>("/api/user/list");
 };

@@ -43,7 +43,6 @@ const ArticleList = () => {
             render: (value, data) => {
               return (
                 <>
-                  {/* @ts-ignore */}
                   {userList?.data?.find((item) => item.id === value)
                     ?.username || "已注销"}
                 </>

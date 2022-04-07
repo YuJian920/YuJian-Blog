@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Layout, Button } from "antd";
-import YuJianLogo from "../../../../assets/image/YuJianLogo.png";
+import YuJianLogo from "../../../../assets/image/YuJianLogo.webp";
 import "../../index.less";
 
 const { Header } = Layout;
