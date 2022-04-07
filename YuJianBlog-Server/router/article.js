@@ -21,9 +21,7 @@ router.post("/add", jwtAuth, async (ctx) => {
 router.post("/delete", jwtAuth, async (ctx) => {
   const { body } = ctx.request;
   if (!body?.id) throw new Fail("文章ID无效");
-  await Article.destroy({ where: { id: <body className="id">
-    
-  </body> } });
+  await Article.destroy({ where: { id: body?.id } });
   throw new Success("删除成功");
 });
 
