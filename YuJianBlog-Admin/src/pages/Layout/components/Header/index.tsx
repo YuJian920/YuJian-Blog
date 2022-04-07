@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Layout, Button } from "antd";
+import { cleanToken } from "../../../../model/user/actions";
 import YuJianLogo from "../../../../assets/image/YuJianLogo.webp";
 import "../../index.less";
 
@@ -8,6 +9,7 @@ const { Header } = Layout;
 
 const pageHeader = () => {
   const dispatch = useDispatch();
+  const onClean = () => dispatch(cleanToken());
 
   return (
     <Header className="pageLayout__header">
@@ -16,10 +18,7 @@ const pageHeader = () => {
         <span>YuJian Admin</span>
       </div>
       <div className="pageLayout__header-right">
-        <Button
-          type="link"
-          onClick={() => dispatch({ type: "user/USER_RESET_TOKEN" })}
-        >
+        <Button type="link" onClick={onClean}>
           Hi YuJian
         </Button>
         {/* <Dropdown
