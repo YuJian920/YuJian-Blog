@@ -1,26 +1,23 @@
-import React, { useState } from "react";
-import { Form, Button, Input } from "antd";
-import { UserOutlined, KeyOutlined } from "@ant-design/icons";
-import { connect, ConnectedProps } from "react-redux";
+import { KeyOutlined, UserOutlined } from "@ant-design/icons";
+import { Button, Form, Input } from "antd";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import * as actions from "../../model/user/actions";
-import "./index.less";
+import { postUserLogin } from "../../model/user/actions";
 import { User } from "../../type";
+import "./index.less";
 
 const { Password } = Input;
 const { Item } = Form;
 
-interface Props extends PropsFromRedux {}
-
-const Login = (props: Props) => {
-  const { postUserLogin } = props;
-
+const Login = () => {
   const [loginLoading, setLoginLoading] = useState(false);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onLogin = async (values: User) => {
+  const onLogin = (values: User) => {
     setLoginLoading(true);
-    await postUserLogin(values);
+    dispatch(postUserLogin(values));
     navigate("/");
   };
 
@@ -67,16 +64,4 @@ const Login = (props: Props) => {
   );
 };
 
-// @ts-ignore
-const mapStateToProps = (state) => ({ token: state.user.token });
-// @ts-ignore
-const mapDispatchToProps = (dispatch) => ({
-  postUserLogin(params: User) {
-    return dispatch(actions.postUserLogin(params));
-  },
-});
-
-const connector = connect(mapStateToProps, mapDispatchToProps)
-type PropsFromRedux = ConnectedProps<typeof connector>
-
-export default connector(Login);
+export default Login;

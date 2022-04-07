@@ -1,9 +1,7 @@
-import React from "react";
 import { Button, Table } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useArticleList, useArticleDelete } from "../../hook/useArticle";
 import { useUser } from "../../hook/useUser";
-import "./index.less";
 
 const ArticleList = () => {
   const { data: articleList, isLoading: articleLoading } = useArticleList();

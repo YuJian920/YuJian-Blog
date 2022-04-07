@@ -1,38 +1,17 @@
-// @ts-nocheck
-import React from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Button } from "antd";
-import * as actions from "@model/user/actions";
+import { cleanToken } from "../../model/user/actions";
 
-import { verifyLogin } from "../../service/user";
-
-const Dashboard = (props) => {
-  const { cleanToken } = props;
-
-  const onVerify = async () => {
-    const res = await verifyLogin();
-    console.log("onVerify", res);
-  };
-
-  const onClean = () => cleanToken();
+const Dashboard = () => {
+  const dispatch = useDispatch();
+  const onClean = () => dispatch(cleanToken());
 
   return (
     <>
-      <h1>A Simple Blog Admin base React</h1>
-      <Button onClick={() => onVerify()}>Verify</Button>
+      <h1>A Simple Blog Admin based on React and TypeScript</h1>
       <Button onClick={() => onClean()}>Clean</Button>
     </>
   );
 };
 
-const mapStateToProps = (state) => ({ token: state.user.token });
-const mapDispatchToProps = (dispatch) => ({
-  postUserLogin(params) {
-    dispatch(actions.postUserLogin(params));
-  },
-  cleanToken() {
-    dispatch(actions.cleanToken());
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default Dashboard;

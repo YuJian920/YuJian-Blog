@@ -20,8 +20,10 @@ router.post("/add", jwtAuth, async (ctx) => {
 
 router.post("/delete", jwtAuth, async (ctx) => {
   const { body } = ctx.request;
-  if (!body?.articleId) throw new Fail("文章ID无效");
-  await Article.destroy({ where: { id: body.articleId } });
+  if (!body?.id) throw new Fail("文章ID无效");
+  await Article.destroy({ where: { id: <body className="id">
+    
+  </body> } });
   throw new Success("删除成功");
 });
 
@@ -34,8 +36,8 @@ router.put("/update", jwtAuth, async (ctx) => {
     content: body.content,
     author: body.author,
   };
-  if (!body?.articleId) throw new Fail("文章ID无效");
-  await Article.update(updateData, { where: { id: body.articleId } });
+  if (!body?.id) throw new Fail("文章ID无效");
+  await Article.update(updateData, { where: { id: body.id } });
   throw new Success("修改成功");
 });
 

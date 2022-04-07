@@ -6,15 +6,11 @@ import { User } from "../../type";
 
 export const setUserToken = (token: string) => ({
   type: actionTypes.USER_SET_TOKEN,
-  token,
+  payload: token,
 });
 
 export const cleanUserToken = () => ({
   type: actionTypes.USER_RESET_TOKEN,
-});
-
-export const setUserList = () => ({
-  type: actionTypes.USER_SET_LIST,
 });
 
 export const postUserLogin = (params: User) => async (dispatch: Dispatch) => {
@@ -27,10 +23,4 @@ export const postUserLogin = (params: User) => async (dispatch: Dispatch) => {
 export const cleanToken = () => async (dispatch: Dispatch) => {
   CookieHelper.delete();
   dispatch(cleanUserToken());
-};
-
-export const getUserList = () => async (dispatch: Dispatch) => {
-  const res = await service.getUserList();
-  dispatch(setUserList());
-  return res.data;
 };

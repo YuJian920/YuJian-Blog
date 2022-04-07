@@ -1,12 +1,11 @@
-import React, { Suspense } from "react";
-import { useRoutes } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Login from "./Login";
+import { useRoutes } from "react-router-dom";
 import routerConfig from "../router";
 import { UserDefaultState } from "../type";
+import Login from "./Login";
 
 const App = () => {
-  const { token } = useSelector((state: UserDefaultState) => state.user);
+  const { token } = useSelector<UserDefaultState, UserDefaultState["user"]>((state) => state.user);
   const routerMap = useRoutes(routerConfig);
 
   if (!token) return <Login />;

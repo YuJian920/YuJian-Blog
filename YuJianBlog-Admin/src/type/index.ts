@@ -6,7 +6,6 @@ export interface User {
 }
 
 export interface Artcile {
-  articleId?: number
   id: number;
   title: string;
   description: string;
@@ -16,6 +15,11 @@ export interface Artcile {
   createdAt?: string;
   deletedAt?: string;
   updatedAt?: string;
+}
+
+export interface UserState {
+  token: string | undefined;
+  userList: User[];
 }
 
 export type UserDefaultState = ReturnType<typeof store.getState>;

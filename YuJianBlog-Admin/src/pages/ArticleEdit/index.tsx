@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
 import { Button, Form, Input, Spin } from "antd";
-import Vditor from "vditor";
+import { useForm } from "antd/lib/form/Form";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Vditor from "vditor";
+import "vditor/dist/index.css";
 import {
   useArticleAdd,
   useArticleEdit,
-  useArticleInfo,
+  useArticleInfo
 } from "../../hook/useArticle";
-import { useForm } from "antd/lib/form/Form";
-import "vditor/dist/index.css";
 import { Artcile } from "../../type";
+import "./index.less";
 
 const ArticleEdit = () => {
   const { data, isLoading: pullLoading } = useArticleInfo();
@@ -45,22 +46,14 @@ const ArticleEdit = () => {
       ...value,
       content: vditorOb?.getValue() || "",
       author: "1",
-      articleId: articleInfo.id || "",
+      id: articleInfo.id || "",
     });
     form.resetFields();
     navigate("/Article/List");
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100%",
-      }}
-    >
+    <div className="articleEdit">
       {pullLoading ? (
         <Spin size="large" />
       ) : (
