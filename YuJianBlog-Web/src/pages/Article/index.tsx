@@ -21,7 +21,7 @@ const Article = () => {
   ) : (
     <div className="article">
       <div className="article__info">
-        <span className="article__info-name">{data?.title}</span>
+        <span className="article__info-title">{data?.title}</span>
         <span className="article__info-lable">Posted {createTime}</span>
       </div>
       <div className="article__box">
