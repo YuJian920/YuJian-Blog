@@ -1,19 +1,11 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import useDocumentTitle from "../../hook/useDocumentTitle";
-import {
-  Container,
-  ArticleInfo,
-  TitleSpan,
-  LableSpan,
-  ContentBox,
-  ContentImg,
-  Conten,
-} from "./style";
 import CodeLight from "./components/CodeLight";
 import Loading from "../../components/Loading";
 import { useArticleDetail } from "../../hook/useArticle";
 import Wallhaven from "../../assets/images/Wallhaven.jpg";
+import "./index.less";
 
 const Article = () => {
   const { data, isLoading } = useArticleDetail();
@@ -27,21 +19,25 @@ const Article = () => {
   return isLoading ? (
     <Loading />
   ) : (
-    <Container>
-      <ArticleInfo>
-        <TitleSpan>{data?.title}</TitleSpan>
-        <LableSpan>Posted {createTime}</LableSpan>
-      </ArticleInfo>
-      <ContentBox>
-        <ContentImg src={data?.cover_url || Wallhaven} alt="Article Logo" />
-        <Conten>
+    <div className="article">
+      <div className="article__info">
+        <span className="article__info-name">{data?.title}</span>
+        <span className="article__info-lable">Posted {createTime}</span>
+      </div>
+      <div className="article__box">
+        <img
+          className="article__box-img"
+          src={data?.cover_url || Wallhaven}
+          alt="Article Logo"
+        />
+        <div className="article__box-content">
           <ReactMarkdown components={{ code: CodeLight }}>
             {data?.content || ""}
           </ReactMarkdown>
-        </Conten>
-      </ContentBox>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default Article;
+export default React.memo(Article);

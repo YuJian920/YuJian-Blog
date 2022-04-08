@@ -1,22 +1,17 @@
 import React from "react";
-import {
-  LoadingContainer,
-  LoadingBox,
-  LoadingTrinity,
-  LoadingCircle,
-} from "./style";
+import "./index.less";
 
 const Loading = () => {
   return (
-    <LoadingContainer>
-      <LoadingBox>
-        <LoadingTrinity>
-          <LoadingCircle />
-          <LoadingCircle />
-          <LoadingCircle />
-        </LoadingTrinity>
-      </LoadingBox>
-    </LoadingContainer>
+    <div className="loading">
+      <div className="loading__box">
+        <div className="loading__box-trinity">
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+        </div>
+      </div>
+    </div>
   );
 };
 

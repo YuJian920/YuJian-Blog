@@ -11,7 +11,6 @@
 - React
 - React Router V6
 - React Query
-- Emotion
 - Vite
 
 ### 博客管理后台 YuJianBlog-Admin 技术栈

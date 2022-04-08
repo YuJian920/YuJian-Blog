@@ -3,7 +3,7 @@ import useDocumentTitle from "../../hook/useDocumentTitle";
 import { useArticleList } from "../../hook/useArticle";
 import ArticleBox from "../../components/ArticleBox";
 import Loading from "../../components/Loading";
-import { Container, Slogan } from "./style";
+import "./index.less";
 
 const Home = () => {
   useDocumentTitle("YuJian's Blog", true);
@@ -11,18 +11,18 @@ const Home = () => {
 
   return (
     <>
-      <Slogan>无物为真，诸行皆允</Slogan>
+      <div className="home__slogan">无物为真，诸行皆允</div>
       {articleLoading ? (
         <Loading />
       ) : (
-        <Container>
+        <div className="home__content">
           {articleList?.map((mapItem) => {
             return <ArticleBox key={mapItem.id} articleData={mapItem} />;
           })}
-        </Container>
+        </div>
       )}
     </>
   );
 };
 
-export default Home;
+export default React.memo(Home);

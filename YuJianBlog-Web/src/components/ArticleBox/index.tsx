@@ -1,16 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  Container,
-  ArticleImgBox,
-  ArticleImg,
-  Box,
-  TitleSpan,
-  DepSpan,
-  InfoSpan,
-} from "./style";
 import Wallhaven from "../../assets/images/Wallhaven.jpg";
 import { ArticleData } from "../../type";
+import "./index.less";
 
 const ArticleBox = ({ articleData }: { articleData: ArticleData }) => {
   const { id, title, description, cover_url, createdAt } = articleData;
@@ -20,18 +12,18 @@ const ArticleBox = ({ articleData }: { articleData: ArticleData }) => {
     ?.join(" ");
 
   return (
-    <Container>
+    <div className="articleBox">
       <Link to={`/Article/${id}`}>
-        <ArticleImgBox>
-          <ArticleImg src={cover_url || Wallhaven} alt="Article Logo" />
-        </ArticleImgBox>
-        <Box>
-          <TitleSpan>{title}</TitleSpan>
-          <DepSpan>{description}</DepSpan>
-          <InfoSpan>Posted {createTime}</InfoSpan>
-        </Box>
+        <div className="articleBox__img">
+          <img src={cover_url || Wallhaven} alt="Article Logo" />
+        </div>
+        <div className="articleBox__box">
+          <span className="articleBox__box-title">{title}</span>
+          <span className="articleBox__box-dep">{description}</span>
+          <span className="articleBox__box-info">Posted {createTime}</span>
+        </div>
       </Link>
-    </Container>
+    </div>
   );
 };
 

@@ -1,8 +1,8 @@
 import React from "react";
-import { FooterDiv } from "./style";
+import "./index.less";
 
 const Footer = () => {
-  return <FooterDiv>Powered By React</FooterDiv>;
+  return <footer className="footer">Powered By React</footer>;
 };
 
 export default React.memo(Footer);

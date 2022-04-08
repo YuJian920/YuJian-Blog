@@ -1,13 +1,4 @@
-import styled from "@emotion/styled";
-
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 6rem;
-`;
-
-export const Slogan = styled.div`
+.home__slogan {
   color: transparent;
   font-size: 40px;
   font-weight: bold;
@@ -18,7 +9,14 @@ export const Slogan = styled.div`
     rgba(43, 115, 175, 0.4) 100%
   );
   -webkit-background-clip: text;
-`;
+}
+
+.home__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6rem;
+}
 
 // rgba(86, 152, 195, 1) 0%,
 // rgba(86, 152, 195, 0.4) 100%
