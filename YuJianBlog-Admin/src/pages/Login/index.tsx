@@ -17,6 +17,7 @@ const Login = () => {
 
   const onLogin = (values: User) => {
     setLoginLoading(true);
+    // @ts-ignore
     dispatch(postUserLogin(values));
     navigate("/");
   };

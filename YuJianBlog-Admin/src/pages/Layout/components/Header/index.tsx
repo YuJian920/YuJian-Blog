@@ -9,6 +9,7 @@ const { Header } = Layout;
 
 const pageHeader = () => {
   const dispatch = useDispatch();
+  // @ts-ignore
   const onClean = () => dispatch(cleanToken());
 
   return (
