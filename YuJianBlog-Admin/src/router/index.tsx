@@ -1,11 +1,9 @@
-import React from "react";
 import Login from "../pages/Login";
 import Layout from "../pages/Layout";
 import Dashboard from "../pages/Dashboard";
 import ArticleList from "../pages/Article";
 import ArticleEdit from "../pages/Article/ArticleEdit";
 import BlogCustom from "../pages/Article/Custom";
-import { Navigate } from "react-router-dom";
 
 const routerConfig = [
   {
@@ -15,22 +13,25 @@ const routerConfig = [
       {
         path: "/",
         element: <Dashboard />,
+        name: "Dashboard",
       },
       {
         path: "/Blog",
-        // element: <Navigate to="/Blog/ArticleList" replace />,
         children: [
           {
             path: "/Blog/ArticleList",
             element: <ArticleList />,
+            name: "文章列表",
           },
           {
             path: "/Blog/ArticleEdit",
             element: <ArticleEdit />,
+            name: "文章编辑",
           },
           {
             path: "/Blog/Custom",
             element: <BlogCustom />,
+            name: "博客样式",
           },
         ],
       },
