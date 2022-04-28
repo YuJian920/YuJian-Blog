@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, MenuProps } from "antd";
 import {
   BookOutlined,
   DashboardOutlined,
@@ -19,6 +19,39 @@ const pageSider = () => {
     setSelectedKeys([pathname]);
   }, [pathname]);
 
+  const menuItem: MenuProps["items"] = useMemo(
+    () => [
+      {
+        label: <Link to="/">Dashboard</Link>,
+        key: "/",
+        icon: <DashboardOutlined />,
+      },
+      {
+        label: "博客管理",
+        key: "/Blog",
+        icon: <BookOutlined />,
+        children: [
+          {
+            label: <Link to="/Blog/ArticleList">文章列表</Link>,
+            key: "/Blog/ArticleList",
+            icon: <FileSearchOutlined />,
+          },
+          {
+            label: <Link to="/Blog/ArticleEdit">文章编辑</Link>,
+            key: "/Blog/ArticleEdit",
+            icon: <HighlightOutlined />,
+          },
+          {
+            label: <Link to="/Blog/Custom">博客样式</Link>,
+            key: "/Blog/Custom",
+            icon: <DeploymentUnitOutlined />,
+          },
+        ],
+      },
+    ],
+    []
+  );
+
   return (
     <Layout.Sider
       width={200}
@@ -31,26 +64,8 @@ const pageSider = () => {
         defaultSelectedKeys={selectedKeys}
         selectedKeys={selectedKeys}
         style={{ height: "100%", borderRight: 0 }}
-      >
-        <Menu.Item key="/" icon={<DashboardOutlined />}>
-          <Link to="/">Dashboard</Link>
-        </Menu.Item>
-        <Menu.SubMenu
-          key="/Blog"
-          icon={<BookOutlined />}
-          title="博客管理"
-        >
-          <Menu.Item key="/Blog/ArticleList" icon={<FileSearchOutlined />}>
-            <Link to="/Blog/ArticleList">文章列表</Link>
-          </Menu.Item>
-          <Menu.Item key="/Blog/ArticleEdit" icon={<HighlightOutlined />}>
-            <Link to="/Blog/ArticleEdit">新建文章</Link>
-          </Menu.Item>
-          <Menu.Item key="/Blog/Custom" icon={<DeploymentUnitOutlined />}>
-            <Link to="/Blog/Custom">博客样式</Link>
-          </Menu.Item>
-        </Menu.SubMenu>
-      </Menu>
+        items={menuItem}
+      />
     </Layout.Sider>
   );
 };
