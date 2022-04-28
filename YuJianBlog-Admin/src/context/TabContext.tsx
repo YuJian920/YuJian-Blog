@@ -12,6 +12,7 @@ import { flattenArray } from "../utils";
 interface TabList {
   name: string;
   path: string;
+  search: string;
 }
 
 interface DefaultTabList {
@@ -33,40 +34,43 @@ const useTabs = () => {
 };
 
 const TabProvider = ({ children }: { children: ReactNode }) => {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   const navigate = useNavigate();
   const [tabList, setTabList] = useState<TabList[]>([
-    { name: "Dashboard", path: "/" },
+    { name: "Dashboard", path: "/", search: "" },
   ]);
   const [activeTab, setActiveTab] = useState("");
 
-  useEffect(() => addTabItem(pathname), [pathname]);
+  useEffect(() => addTabItem(pathname, search), [pathname, search]);
 
   /**
    * 添加 Tab
    * @param path
    * @returns
    */
-  const addTabItem = (path: TabList["path"]) => {
+  const addTabItem = (path: TabList["path"], search: TabList["search"]) => {
     if (findTabUtils(path) === -1) {
       const flattenList = flattenArray(routerConfig);
       const routerIndex = flattenList.findIndex((item) => item.path === path);
 
       if (routerIndex !== -1) {
-        setTabList([...tabList, { path, name: flattenList[routerIndex].name }]);
+        setTabList([
+          ...tabList,
+          { path, name: flattenList[routerIndex].name, search },
+        ]);
       }
     }
 
-    switchTab(path);
+    switchTab(path, search);
   };
 
   /**
    * 切换 Tab
    * @param path
    */
-  const switchTab = (path: TabList["path"]) => {
+  const switchTab = (path: TabList["path"], search: TabList["search"] = "") => {
     setActiveTab(path);
-    navigate(path);
+    navigate(path + search);
   };
 
   /**

@@ -24,7 +24,7 @@ const PageTab = () => {
               ? "pageTab__item pageTab__activeItem"
               : "pageTab__item"
           }
-          onClick={() => switchTab(mapItem.path)}
+          onClick={() => switchTab(mapItem.path + mapItem.search)}
           key={index}
         >
           {/* <span className="pageTab__item-reIcon">
