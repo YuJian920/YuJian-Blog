@@ -10,7 +10,7 @@ class Article extends Model {
   }
 
   static async findArticle() {
-    return await Article.findAll({ order: [["title", "DESC"]] });
+    return await Article.findAll({ order: [["id", "DESC"]] });
   }
 }
 
