@@ -1,7 +1,12 @@
 import "../../index.less";
 
 const CustomLink = ({ children, ...props }: any) => (
-  <a className="customLink" title={props.href}>
+  <a
+    className="customLink"
+    href={props.href}
+    target="_blank"
+    title={props.href}
+  >
     {children}
   </a>
 );

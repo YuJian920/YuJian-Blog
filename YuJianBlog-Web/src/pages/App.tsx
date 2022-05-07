@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import { useRoutes } from "react-router-dom";
 import routerConfig from "../router";
 import Loading from "../components/Loading";

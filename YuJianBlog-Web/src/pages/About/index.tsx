@@ -1,4 +1,3 @@
-import React from "react";
 import useDocumentTitle from "../../hook/useDocumentTitle";
 import "./index.less";
 
@@ -61,4 +60,4 @@ const About = () => {
   );
 };
 
-export default React.memo(About);
+export default About;

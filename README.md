@@ -1,4 +1,4 @@
-# YuJianBlog-X Remake 重构 
+# YuJianBlog-X Remake 重构
 
 ## 基于 React 的全栈博客系统。
 
@@ -11,6 +11,8 @@
 - React
 - React Router V6
 - React Query
+- React-Markdown
+- React-Syntax-Highlighter
 - Vite
 
 ### 博客管理后台 YuJianBlog-Admin 技术栈
@@ -35,4 +37,5 @@
 - 2022-04-01 Web 完成基础文章获取和加载
 
 ## Todo
+
 - [ ] TypeScript 重构前后端
