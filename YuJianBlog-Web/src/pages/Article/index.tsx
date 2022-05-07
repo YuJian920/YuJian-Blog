@@ -1,9 +1,11 @@
-import React from "react";
 import ReactMarkdown from "react-markdown";
-import useDocumentTitle from "../../hook/useDocumentTitle";
-import CodeLight from "./components/CodeLight";
 import Loading from "../../components/Loading";
 import { useArticleDetail } from "../../hook/useArticle";
+import useDocumentTitle from "../../hook/useDocumentTitle";
+import CustomCode from "./components/CustomCode";
+import CustomLink from "./components/CustomLink";
+import CustomH2 from "./components/CustomH2";
+import CustomFont from "./components/CustomFont";
 import "./index.less";
 
 const Article = () => {
@@ -30,7 +32,14 @@ const Article = () => {
           alt="Article Logo"
         />
         <div className="article__box-content">
-          <ReactMarkdown components={{ code: CodeLight }}>
+          <ReactMarkdown
+            components={{
+              code: CustomCode,
+              a: CustomLink,
+              h2: CustomH2,
+              p: CustomFont,
+            }}
+          >
             {data?.content || ""}
           </ReactMarkdown>
         </div>
@@ -39,4 +48,4 @@ const Article = () => {
   );
 };
 
-export default React.memo(Article);
+export default Article;

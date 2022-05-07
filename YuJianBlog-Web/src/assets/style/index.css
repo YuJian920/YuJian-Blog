@@ -11,6 +11,7 @@ html {
 html body #root .layout {
   min-height: 100vh;
   background-color: #fafafa;
+  font-family: "STZhongsong";
 }
 
 a {

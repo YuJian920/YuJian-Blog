@@ -12,7 +12,7 @@
     justify-content: center;
     align-items: center;
     font-weight: 700;
-    margin-top: 3.2rem;
+    // margin-top: 3.2rem;
     margin-bottom: 3.2rem;
     width: 100rem;
 
@@ -23,17 +23,18 @@
     }
 
     &-title {
-      font-size: 3.6rem;
+      font-size: 4rem;
       line-height: 4rem;
       margin-bottom: 1.2rem;
 
       @media (max-width: 500px) {
-        font-size: 2rem;
+        font-size: 2.4rem;
         line-height: 2.5rem;
       }
     }
 
     &-lable {
+      margin-top: 0.5rem;
       font-size: 1.2rem;
       line-height: 1.6rem;
     }
@@ -67,5 +68,23 @@
         width: 100%;
       }
     }
+  }
+
+  .customLink {
+    color: #126bae;
+    cursor: pointer;
+  }
+
+  .customH2 {
+    span {
+      padding-left: 10px;
+      border-left: 3px solid #2474b5;
+    }
+  }
+
+  .customFont {
+    line-height: 1.8;
+    margin: 8px 0;
+    font-size: 16px;
   }
 }
