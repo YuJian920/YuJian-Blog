@@ -4,7 +4,6 @@ import useDocumentTitle from "../../hook/useDocumentTitle";
 import CodeLight from "./components/CodeLight";
 import Loading from "../../components/Loading";
 import { useArticleDetail } from "../../hook/useArticle";
-import Wallhaven from "../../assets/images/Wallhaven.jpg";
 import "./index.less";
 
 const Article = () => {
@@ -27,7 +26,7 @@ const Article = () => {
       <div className="article__box">
         <img
           className="article__box-img"
-          src={data?.cover_url || Wallhaven}
+          src={data?.cover_url || ""}
           alt="Article Logo"
         />
         <div className="article__box-content">

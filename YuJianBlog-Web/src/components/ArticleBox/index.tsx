@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Wallhaven from "../../assets/images/Wallhaven.jpg";
 import { ArticleData } from "../../type";
 import "./index.less";
 
@@ -15,7 +14,7 @@ const ArticleBox = ({ articleData }: { articleData: ArticleData }) => {
     <div className="articleBox">
       <Link to={`/Article/${id}`}>
         <div className="articleBox__img">
-          <img src={cover_url || Wallhaven} alt="Article Logo" />
+          <img src={cover_url || ""} alt="Article Logo" />
         </div>
         <div className="articleBox__box">
           <span className="articleBox__box-title">{title}</span>
