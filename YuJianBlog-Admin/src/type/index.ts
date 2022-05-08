@@ -21,6 +21,12 @@ export interface Artcile {
   author: string;
 }
 
+export interface BlogCustom {
+  id: number;
+  slogan: string;
+  footer: string;
+}
+
 export interface UserState {
   token?: string | undefined;
   userList?: User[];
