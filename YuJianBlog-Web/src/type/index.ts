@@ -5,4 +5,11 @@ export interface ArticleData {
   cover_url: string;
   content: string;
   createdAt: string;
+  tips: string;
+}
+
+export interface BlogCustom {
+  id: number;
+  slogan: string;
+  footer: string;
 }

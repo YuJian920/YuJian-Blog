@@ -31,6 +31,7 @@ const Article = () => {
           src={data?.cover_url || ""}
           alt="Article Logo"
         />
+        {data?.tips && <div className="article__box-tips">{data.tips}</div>}
         <div className="article__box-content">
           <ReactMarkdown
             components={{
