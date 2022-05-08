@@ -41,6 +41,10 @@ Article.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    tips: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   { sequelize, tableName: "article" }
 );

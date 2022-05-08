@@ -6,11 +6,11 @@ const jwtAuth = require("../middlewares/tokenAuth");
 
 const router = new Router({ prefix: "/api/user" });
 
-router.post("/register", async (ctx) => {
-  const { body } = ctx.request;
-  await User.create({ username: body.username, password: body.password });
-  throw new Success("注册成功");
-});
+// router.post("/register", async (ctx) => {
+//   const { body } = ctx.request;
+//   await User.create({ username: body.username, password: body.password });
+//   throw new Success("注册成功");
+// });
 
 router.post("/login", async (ctx) => {
   const { body } = ctx.request;
@@ -23,7 +23,7 @@ router.get("/list", jwtAuth, async () => {
   throw new Success("获取成功", userList);
 });
 
-router.post("/verify", jwtAuth, async (ctx) => {
+router.post("/verify", jwtAuth, async () => {
   throw new Fail("验证成功");
 });
 

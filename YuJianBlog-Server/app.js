@@ -12,6 +12,7 @@ app.use(parser());
 // import Router
 app.use(require("./router/user").routes());
 app.use(require("./router/article").routes());
+app.use(require("./router/blogCustom").routes());
 
 app.listen(PORT);
-console.log("The Simple Http Server is Running in", `http://localhost:${PORT}`);
+console.log("The Simple Blog Server is Running in", `http://localhost:${PORT}`);
