@@ -1,5 +1,5 @@
 const Router = require("koa-router");
-const BlogCustom = require("../models/BlogCustom");
+const BlogCustom = require("../models/blogCustom");
 const { Success, Fail } = require("../utils/exception");
 const jwtAuth = require("../middlewares/tokenAuth");
 
