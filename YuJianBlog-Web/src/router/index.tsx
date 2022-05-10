@@ -1,4 +1,5 @@
 import { lazy } from "react";
+import { Navigate } from "react-router-dom";
 import Article from "../pages/Article";
 
 const Layout = lazy(() => import("../pages/Layout"));
@@ -23,6 +24,10 @@ const routerConfig = [
         element: <About />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <Navigate to="/" />,
   },
 ];
 
