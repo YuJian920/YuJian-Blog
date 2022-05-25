@@ -4,19 +4,29 @@
   -webkit-overflow-scrolling: touch;
 }
 
+:root {
+  --theme-bg-color: #fafafa;
+  --theme-font-color: #000000;
+  --theme-box-color: #ffffff;
+  --theme-slogan-color: linear-gradient(
+    45deg,
+    rgba(43, 115, 175, 1) 0%,
+    rgba(43, 115, 175, 0.4) 100%
+  );
+}
+
 html {
   font-size: 62.5%;
 }
 
 html body #root .layout {
   min-height: 100vh;
-  background-color: #fafafa;
   font-family: "STZhongsong";
 }
 
 a {
   text-decoration: none;
-  color: #000000;
+  color: var(--theme-font-color);
 }
 
 img {

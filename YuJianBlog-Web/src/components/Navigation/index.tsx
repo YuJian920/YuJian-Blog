@@ -3,20 +3,28 @@ import { Link } from "react-router-dom";
 import YuJianLogo from "../../assets/images/YuJianLogo.webp";
 import "./index.less";
 
-const Routes = [
+const linkMap = [
   { name: "首页", path: "/" },
   { name: "关于", path: "/About" },
 ];
 
 const Navigation = () => {
-  const linkMap = Routes;
   const [darkMode, setDarkMode] = useState(false); // 深色模式状态
 
   // 切换 深色模式
-  const _onDarkMode = (value: boolean) => {
-    value
-      ? document.documentElement.classList.add("dark")
-      : document.documentElement.classList.remove("dark");
+  const onDarkMode = (value: boolean) => {
+    if (value) {
+      document.documentElement.style.setProperty("--theme-bg-color", "#0f0f0f");
+      document.documentElement.style.setProperty("--theme-font-color", "#ced8de");
+      document.documentElement.style.setProperty("--theme-box-color", "#2d3235");
+      document.documentElement.style.setProperty("--theme-slogan-color", "linear-gradient(45deg,rgba(147, 181, 207, 1) 0%,rgba(147, 181, 207, 0.4) 100%)");
+    } else {
+      document.documentElement.style.setProperty("--theme-bg-color", "#fafafa");
+      document.documentElement.style.setProperty("--theme-font-color", "#000000");
+      document.documentElement.style.setProperty("--theme-box-color", "#ffffff");
+      document.documentElement.style.setProperty("--theme-slogan-color", "linear-gradient(45deg,rgba(43, 115, 175, 1) 0%,rgba(43, 115, 175, 0.4) 100%)");
+    }
+
     setDarkMode(value);
   };
 
@@ -44,7 +52,7 @@ const Navigation = () => {
           {!darkMode ? (
             <svg
               className="svg"
-              onClick={() => _onDarkMode(true)}
+              onClick={() => onDarkMode(true)}
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -57,7 +65,7 @@ const Navigation = () => {
           ) : (
             <svg
               className="svg"
-              onClick={() => _onDarkMode(false)}
+              onClick={() => onDarkMode(false)}
               width="24"
               height="24"
               viewBox="0 0 24 24"

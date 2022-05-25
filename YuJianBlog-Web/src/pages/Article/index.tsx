@@ -20,12 +20,12 @@ const Article = () => {
   return isLoading ? (
     <Loading />
   ) : (
-    <div className="article">
+    <article className="article">
       {data?.title ? (
         <>
           <div className="article__info">
             <span className="article__info-title">{data?.title}</span>
-            <span className="article__info-lable">Posted {createTime}</span>
+            <time className="article__info-lable">Posted {createTime}</time>
           </div>
           <div className="article__box">
             <img
@@ -51,7 +51,7 @@ const Article = () => {
       ) : (
         <h1>哦豁，文章不见了，可能已经被删除啦</h1>
       )}
-    </div>
+    </article>
   );
 };
 
