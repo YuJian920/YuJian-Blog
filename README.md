@@ -21,6 +21,8 @@
 - React Redux
 - React Router V6
 - React Query
+- React-Markdown
+- React-Markdown-Editor-Lite
 - Axios
 - Vite
 - Ant Design
@@ -29,13 +31,3 @@
 
 - Koa
 - Sequelize
-
-## 更新日志
-
-- 2022-03-12 Server 后端完成基础博客功能
-- 2022-03-31 Admin 后台管理完成基础文章增删改查功能
-- 2022-04-01 Web 完成基础文章获取和加载
-
-## Todo
-
-- [ ] TypeScript 重构前后端
