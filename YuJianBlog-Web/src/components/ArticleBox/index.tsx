@@ -1,14 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ArticleData } from "../../type";
+import { splitTime } from "../../utils";
 import "./index.less";
 
 const ArticleBox = ({ articleData }: { articleData: ArticleData }) => {
   const { id, title, description, cover_url, createdAt } = articleData;
-  const createTime = createdAt
-    ?.substring(0, createdAt.length - 5)
-    ?.split("T")
-    ?.join(" ");
 
   return (
     <div className="articleBox">
@@ -19,7 +16,9 @@ const ArticleBox = ({ articleData }: { articleData: ArticleData }) => {
         <div className="articleBox__box">
           <span className="articleBox__box-title">{title}</span>
           <span className="articleBox__box-dep">{description}</span>
-          <span className="articleBox__box-info">Posted {createTime}</span>
+          <span className="articleBox__box-info">
+            Posted {splitTime(createdAt)}
+          </span>
         </div>
       </Link>
     </div>

@@ -9,22 +9,20 @@ import "./index.less";
 const Home = () => {
   useDocumentTitle("YuJian's Blog", true);
   const { data: articleList, isLoading: articleLoading } = useArticleList();
-  const { data: customData } = useCustom();
+  const { data: customData, isLoading: customLoading } = useCustom();
 
-  return (
+  return articleLoading || customLoading ? (
+    <Loading />
+  ) : (
     <>
       <div className="home__slogan">
         {customData?.[0].slogan || "无物为真，诸行皆允"}
       </div>
-      {articleLoading ? (
-        <Loading />
-      ) : (
-        <div className="home__content">
-          {articleList?.map((mapItem) => {
-            return <ArticleBox key={mapItem.id} articleData={mapItem} />;
-          })}
-        </div>
-      )}
+      <div className="home__content">
+        {articleList?.map((mapItem) => (
+          <ArticleBox key={mapItem.id} articleData={mapItem} />
+        ))}
+      </div>
     </>
   );
 };
