@@ -3,7 +3,6 @@
   align-items: center;
   margin: 5px;
   padding: 5px;
-  height: 40px;
   background-color: #ffffff;
 
   .pageTab__item {
@@ -12,13 +11,13 @@
     justify-content: space-between;
     align-items: center;
     border-radius: 5px;
-    padding: 5px;
+    padding: 3px;
     margin: 2px;
     background-color: #ffffff;
     border: 1px solid #c04851;
     min-width: 90px;
-    height: 90%;
     margin-right: 5px;
+    transition: background-color 0.3s;
 
     cursor: pointer;
     user-select: none;
@@ -28,7 +27,8 @@
       padding-right: 5px;
     }
 
-    &-reIcon, &-closeIcon {
+    &-reIcon,
+    &-closeIcon {
       width: 10px;
     }
   }

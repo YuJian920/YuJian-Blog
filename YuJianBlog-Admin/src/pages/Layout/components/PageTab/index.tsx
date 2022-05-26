@@ -17,15 +17,15 @@ const PageTab = () => {
 
   return (
     <div className="pageTab">
-      {tabList.map((mapItem, index) => (
+      {tabList.map((mapItem) => (
         <div
           className={
             mapItem.path === activeTab
               ? "pageTab__item pageTab__activeItem"
               : "pageTab__item"
           }
-          onClick={() => switchTab(mapItem.path + mapItem.search)}
-          key={index}
+          onClick={() => switchTab(mapItem.path,  mapItem.search)}
+          key={mapItem.path}
         >
           {/* <span className="pageTab__item-reIcon">
             {mapItem.path === activeTab ? <SyncOutlined /> : null}

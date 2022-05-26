@@ -1,4 +1,4 @@
-import { Button, Form, Input, Spin } from "antd";
+import { Button, Form, Input, message, Spin } from "antd";
 import { useForm } from "antd/lib/form/Form";
 import { useEffect } from "react";
 import { useBlogCustom, useBlogCustomMutation } from "../../../hook/useCustom";
@@ -11,13 +11,23 @@ const Custom = () => {
   const [form] = useForm();
   const customData = data?.data || {};
 
+  // 初始化表单
   useEffect(() => {
     form.resetFields();
     form.setFieldsValue(customData[0]);
   }, [customData, form]);
 
+  // 提交表单
   const onCustomSubmit = async (value: BlogCustom) => {
-    await mutateAsync({ ...value, id: 1 });
+    try {
+      // @ts-ignore
+      const { code, msg } = await mutateAsync({ ...value, id: 1 });
+
+      if (code === 0) message.success("提交成功");
+      else message.warning(msg);
+    } catch {
+      message.error("出现错误");
+    }
   };
 
   return (
@@ -25,7 +35,7 @@ const Custom = () => {
       {customLoading ? (
         <Spin size="large" />
       ) : (
-        <Form style={{ width: "80%" }} form={form} onFinish={onCustomSubmit}>
+        <Form style={{ width: "100%" }} form={form} onFinish={onCustomSubmit}>
           <Form.Item label="首页文字" name="slogan">
             <Input placeholder="请输入首页文字" />
           </Form.Item>

@@ -18,14 +18,14 @@ interface TabList {
 interface DefaultTabList {
   tabList: TabList[];
   activeTab: string;
-  switchTab: (path: TabList["path"]) => void;
+  switchTab: (path: TabList["path"], search?: TabList["search"]) => void;
   closeTab: (path: TabList["path"]) => void;
 }
 
 const TabContext = React.createContext<DefaultTabList | undefined>(void 0);
 TabContext.displayName = "TabContext";
 
-const useTabs = () => {
+export const useTabs = () => {
   const context = useContext(TabContext);
   if (context === undefined) {
     throw new Error("useTabs must be used within a TabContext");
@@ -33,7 +33,7 @@ const useTabs = () => {
   return context;
 };
 
-const TabProvider = ({ children }: { children: ReactNode }) => {
+export const TabProvider = ({ children }: { children: ReactNode }) => {
   const { pathname, search } = useLocation();
   const navigate = useNavigate();
   const [tabList, setTabList] = useState<TabList[]>([
@@ -41,7 +41,11 @@ const TabProvider = ({ children }: { children: ReactNode }) => {
   ]);
   const [activeTab, setActiveTab] = useState("");
 
+  // 监听路由变化
   useEffect(() => addTabItem(pathname, search), [pathname, search]);
+
+  // 扁平化路由
+  const flattenList = useMemo(() => flattenArray(routerConfig), [routerConfig]);
 
   /**
    * 添加 Tab
@@ -50,7 +54,6 @@ const TabProvider = ({ children }: { children: ReactNode }) => {
    */
   const addTabItem = (path: TabList["path"], search: TabList["search"]) => {
     if (findTabUtils(path) === -1) {
-      const flattenList = flattenArray(routerConfig);
       const routerIndex = flattenList.findIndex((item) => item.path === path);
 
       if (routerIndex !== -1) {
@@ -99,12 +102,8 @@ const TabProvider = ({ children }: { children: ReactNode }) => {
 
   const providerValue = useMemo(
     () => ({ tabList, activeTab, switchTab, closeTab }),
-    [tabList, activeTab]
+    [tabList, activeTab, routerConfig]
   );
 
   return <TabContext.Provider value={providerValue} children={children} />;
 };
-
-export { TabProvider, useTabs };
-
-// export { useTabs };
