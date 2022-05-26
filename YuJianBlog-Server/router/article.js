@@ -13,6 +13,7 @@ router.post("/add", jwtAuth, async (ctx) => {
     cover_url: body.cover_url,
     content: body.content,
     author: body.author,
+    tips: body.tips,
   };
   await Article.create(createData);
   throw new Success("创建成功");
@@ -33,6 +34,7 @@ router.put("/update", jwtAuth, async (ctx) => {
     cover_url: body.cover_url,
     content: body.content,
     author: body.author,
+    tips: body.tips,
   };
   if (!body?.id) throw new Fail("文章ID无效");
   await Article.update(updateData, { where: { id: body.id } });

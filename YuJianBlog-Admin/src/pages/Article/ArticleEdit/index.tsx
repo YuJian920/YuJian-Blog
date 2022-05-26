@@ -1,4 +1,4 @@
-import { Button, Form, Input, Spin } from "antd";
+import { Button, Form, Input, message, Spin } from "antd";
 import { useForm } from "antd/lib/form/Form";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
@@ -45,26 +45,33 @@ const ArticleEdit = () => {
    * @param value
    */
   const onFinish = async (value: Artcile) => {
-    await mutateAsync({
+    const params = {
       ...value,
       content: mdValue,
       author: "1",
       id: articleInfo.id || "",
-    });
-    form.resetFields();
-    navigate("/Blog/ArticleList");
+    };
+
+    try {
+      // @ts-ignore
+      const { code, msg } = await mutateAsync(params);
+
+      if (code === 0) {
+        message.success("提交成功");
+        form.resetFields();
+        navigate("/Blog/ArticleList");
+      } else message.warning(msg);
+    } catch {
+      message.error("出现错误");
+    }
   };
 
   return (
-    <div className="articleEdit">
+    <div className="articleEdit flexEle">
       {pullLoading ? (
         <Spin size="large" />
       ) : (
-        <Form
-          style={{ height: "100%", width: "80%" }}
-          form={form}
-          onFinish={onFinish}
-        >
+        <Form style={{ width: "100%" }} form={form} onFinish={onFinish}>
           <Form.Item
             name="title"
             rules={[{ required: true, message: "请输入文章标题" }]}
@@ -77,16 +84,24 @@ const ArticleEdit = () => {
           >
             <Input placeholder="请输入文章描述" />
           </Form.Item>
-          <Form.Item name="cover_url">
+          <Form.Item
+            name="cover_url"
+            rules={[{ required: true, message: "请输入文章图片URL" }]}
+          >
             <Input placeholder="文章图片URL" />
           </Form.Item>
-          <MdEditor
-            style={{ height: "500px" }}
-            value={mdValue}
-            renderHTML={(text) => <ReactMarkdown children={text} />}
-            onChange={({ text }) => setMdValue(text)}
-          />
-          <Form.Item style={{ textAlign: "right", marginTop: 20 }}>
+          <Form.Item>
+            <MdEditor
+              style={{ height: "500px" }}
+              value={mdValue}
+              renderHTML={(text) => <ReactMarkdown children={text} />}
+              onChange={({ text }) => setMdValue(text)}
+            />
+          </Form.Item>
+          <Form.Item name="tips">
+            <Input placeholder="提示文字" />
+          </Form.Item>
+          <Form.Item style={{ textAlign: "right" }}>
             <Button type="primary" htmlType="submit" loading={isLoading}>
               提交
             </Button>
