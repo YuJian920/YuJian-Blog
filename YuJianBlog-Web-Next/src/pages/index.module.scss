@@ -1,0 +1,26 @@
+.home__slogan {
+  color: transparent;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  background: var(--theme-slogan-color);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.home__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6rem;
+
+  @media (max-width: 500px) {
+    margin-top: 3rem;
+  }
+}
+
+// rgba(86, 152, 195, 1) 0%,
+// rgba(86, 152, 195, 0.4) 100%
+
+// rgba(43, 115, 175, 1) 0%,
+// rgba(43, 115, 175, 0.4) 100%

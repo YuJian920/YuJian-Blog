@@ -15,6 +15,16 @@
 - React-Syntax-Highlighter
 - Vite
 
+### 博客前端 YuJianBlog-Web-Next 技术栈
+
+> 基于 Next.js 服务端渲染的博客前端，是博客前端的下一个主要版本
+
+- React
+- React Query
+- React-Markdown
+- React-Syntax-Highlighter
+- Next
+
 ### 博客管理后台 YuJianBlog-Admin 技术栈
 
 - React
