@@ -1,4 +1,3 @@
-import React from "react";
 import useDocumentTitle from "../../hook/useDocumentTitle";
 import { useArticleList } from "../../hook/useArticle";
 import { useCustom } from "../../hook/useCustom";
@@ -27,4 +26,4 @@ const Home = () => {
   );
 };
 
-export default React.memo(Home);
+export default Home;

@@ -1,4 +1,3 @@
-import React from "react";
 import "./index.less";
 
 const Loading = () => {
@@ -15,4 +14,4 @@ const Loading = () => {
   );
 };
 
-export default React.memo(Loading);
+export default Loading;

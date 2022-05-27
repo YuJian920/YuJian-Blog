@@ -19,8 +19,7 @@ html {
   font-size: 62.5%;
 }
 
-html body #root .layout {
-  min-height: 100vh;
+html body #root {
   font-family: "STZhongsong";
 }
 
