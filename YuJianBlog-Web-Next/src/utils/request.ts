@@ -1,8 +1,7 @@
 import { baseURL } from "./config";
 
 const request = async (endpoint: string) => {
-  return window
-    .fetch(`${baseURL}${endpoint}`)
+  return fetch(`${baseURL}${endpoint}`)
     .then(async (response) => {
       const result = await response.json();
       if (response.ok) return result.data;
