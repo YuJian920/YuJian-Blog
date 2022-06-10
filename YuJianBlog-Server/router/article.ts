@@ -1,7 +1,7 @@
-const Router = require("koa-router");
-const Article = require("../models/article");
-const { Success, Fail } = require("../utils/exception");
-const jwtAuth = require("../middlewares/tokenAuth");
+import Router from "koa-router";
+import Article from "../models/article";
+import { Success, Fail } from "../utils/exception";
+import jwtAuth from "../middlewares/tokenAuth";
 
 const router = new Router({ prefix: "/api/article" });
 
@@ -52,4 +52,4 @@ router.get("/:id", async (ctx) => {
   throw new Success("文章获取成功", articleData);
 });
 
-module.exports = router;
+export default router;

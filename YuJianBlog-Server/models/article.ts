@@ -1,9 +1,25 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../db");
-const { Fail } = require("../utils/exception");
+import { Model, DataTypes } from "sequelize";
+import type {
+  InferAttributes,
+  InferCreationAttributes,
+  CreationOptional,
+} from "sequelize";
+import sequelize from "../utils/sequelize";
+import { Fail } from "../utils/exception";
 
-class Article extends Model {
-  static async findArticleById(id) {
+class Article extends Model<
+  InferAttributes<Article>,
+  InferCreationAttributes<Article>
+> {
+  declare id: CreationOptional<number>;
+  declare title: string;
+  declare description: string;
+  declare cover_url: string;
+  declare content: string;
+  declare author: number;
+  declare tips: string;
+
+  static async findArticleById(id: string) {
     const articleData = await Article.findOne({ where: { id } });
     if (!articleData) throw new Fail("文章不存在");
     else return articleData;
@@ -49,4 +65,4 @@ Article.init(
   { sequelize, tableName: "article" }
 );
 
-module.exports = Article;
+export default Article;

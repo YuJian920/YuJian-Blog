@@ -1,3 +1,9 @@
+interface Exception {
+  code: number;
+  msg: string;
+  data: any;
+}
+
 class Exception extends Error {
   constructor(code = -1, msg = "服务器出现错误", data = {}) {
     super();
@@ -25,4 +31,4 @@ class Fail extends Exception {
   }
 }
 
-module.exports = { Exception, Success, Fail };
+export { Exception, Success, Fail };

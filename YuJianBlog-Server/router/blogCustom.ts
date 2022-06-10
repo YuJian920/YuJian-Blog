@@ -1,7 +1,7 @@
-const Router = require("koa-router");
-const BlogCustom = require("../models/blogCustom");
-const { Success, Fail } = require("../utils/exception");
-const jwtAuth = require("../middlewares/tokenAuth");
+import Router from "koa-router";
+import BlogCustom from "../models/blogCustom";
+import { Success, Fail } from "../utils/exception";
+import jwtAuth from "../middlewares/tokenAuth";
 
 const router = new Router({ prefix: "/api/blogCustom" });
 
@@ -19,4 +19,4 @@ router.post("/", jwtAuth, async (ctx) => {
   throw new Success("修改成功");
 });
 
-module.exports = router;
+export default router;

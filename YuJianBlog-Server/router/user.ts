@@ -1,8 +1,8 @@
-const Router = require("koa-router");
-const User = require("../models/user");
-const { Success, Fail } = require("../utils/exception");
-const { generateToken } = require("../utils");
-const jwtAuth = require("../middlewares/tokenAuth");
+import Router from "koa-router";
+import User from "../models/user";
+import { Success, Fail } from "../utils/exception";
+import { generateToken } from "../utils";
+import jwtAuth from "../middlewares/tokenAuth";
 
 const router = new Router({ prefix: "/api/user" });
 
@@ -27,4 +27,4 @@ router.post("/verify", jwtAuth, async () => {
   throw new Fail("验证成功");
 });
 
-module.exports = router;
+export default router;

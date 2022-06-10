@@ -1,6 +1,7 @@
-const { Exception } = require("../utils/exception");
+import { Exception } from "../utils/exception";
+import type { ParameterizedContext, Next } from "koa";
 
-const catchError = async (ctx, next) => {
+const catchError = async (ctx: ParameterizedContext, next: Next) => {
   try {
     await next();
   } catch (error) {
@@ -24,4 +25,4 @@ const catchError = async (ctx, next) => {
   }
 };
 
-module.exports = catchError;
+export default catchError;
