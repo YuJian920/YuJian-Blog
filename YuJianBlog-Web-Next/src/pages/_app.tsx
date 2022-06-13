@@ -29,7 +29,7 @@ const HeadConf = () => (
     <meta name="apple-mobile-web-app-status-bar-style" content="white" />
     <meta
       name="description"
-      content="YuJian's Blog，一个很简单的前端博客"
+      content="YuJian's Blog，一个很简单不纯粹的前端博客"
     ></meta>
     <title>YuJian's Blog</title>
   </Head>
