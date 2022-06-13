@@ -1,10 +1,8 @@
-import { lazy } from "react";
 import { Navigate } from "react-router-dom";
 import Article from "../pages/Article";
 import Layout from "../pages/Layout";
 import Home from "../pages/Home";
-
-const About = lazy(() => import("../pages/About"));
+import About from "../pages/About";
 
 const routerConfig = [
   {
