@@ -1,7 +1,5 @@
-import { baseURL } from "./config";
-
 const request = async (endpoint: string) => {
-  return fetch(`${baseURL}${endpoint}`)
+  return fetch(`${import.meta.env.VITE_BASE_URL}${endpoint}`)
     .then(async (response) => {
       const result = await response.json();
       if (response.ok) return result.data;
