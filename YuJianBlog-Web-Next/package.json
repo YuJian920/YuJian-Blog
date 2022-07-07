@@ -1,12 +1,12 @@
 {
   "name": "yujianblog-web",
   "description": "一个简单的基于 React 的博客",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "scripts": {
-    "dev": "next dev -p 9800",
+    "dev": "next dev",
     "build": "next build",
     "export": "next build && next export",
-    "start": "next start",
+    "start": "next start -p 9800",
     "lint": "next lint"
   },
   "dependencies": {

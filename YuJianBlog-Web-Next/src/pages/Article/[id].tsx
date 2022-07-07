@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import Loading from "../../components/Loading";
 import { useArticleDetail } from "../../hook/useArticle";
@@ -28,10 +29,13 @@ const Article = () => {
             </time>
           </div>
           <div className={style.article__box}>
-            <img
-              className={style["article__box-img"]}
+            <Image
+              style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8 }}
               src={data?.cover_url || ""}
-              alt="Article Logo"
+              height={450}
+              width={800}
+              layout="responsive"
+              alt={data?.title || "Article Logo"}
             />
             {data?.tips && (
               <div className={style["article__box-tips"]}>{data.tips}</div>

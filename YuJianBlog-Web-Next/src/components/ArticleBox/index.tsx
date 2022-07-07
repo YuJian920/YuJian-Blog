@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ArticleData } from "../../type";
 import { splitTime } from "../../utils";
@@ -9,9 +10,14 @@ const ArticleBox = ({ articleData }: { articleData: ArticleData }) => {
   return (
     <Link href={`/Article/${id}`}>
       <div className={style.articleBox}>
-        <div className={style.articleBox__img}>
-          <img src={cover_url || ""} alt="Article Logo" />
-        </div>
+        <Image
+          src={cover_url || ""}
+          height={500}
+          width={800}
+          layout="responsive"
+          alt="Article Logo"
+          style={{ borderTopLeftRadius: 5, borderTopRightRadius: 5 }}
+        />
         <div className={style.articleBox__box}>
           <span className={style["articleBox__box-title"]}>{title}</span>
           <span className={style["articleBox__box-dep"]}>{description}</span>
