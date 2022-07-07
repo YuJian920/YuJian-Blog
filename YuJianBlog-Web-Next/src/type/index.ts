@@ -6,6 +6,7 @@ export interface ArticleData {
   content: string;
   createdAt: string;
   tips: string;
+  notFound: boolean;
 }
 
 export interface BlogCustom {

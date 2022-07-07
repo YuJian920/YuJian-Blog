@@ -1,3 +1,4 @@
+// @ts-noCheck
 import Head from "next/head";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
@@ -13,11 +14,13 @@ import style from "./index.module.scss";
 const Article = () => {
   const { data, isLoading } = useArticleDetail();
 
+  const isNotFound = typeof data === "undefined" || data?.notFound;
+
   return isLoading ? (
     <Loading />
   ) : (
     <article className={style.article}>
-      {data?.title ? (
+      {!isNotFound ? (
         <>
           <Head>
             <title>{data?.title}</title>
