@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@ant-design/icons': ^4.7.0
   '@types/js-cookie': ^3.0.2
   '@types/react': ^18.0.15
   '@types/react-dom': ^18.0.6
@@ -26,6 +27,7 @@ specifiers:
   vite-plugin-imp: ^2.2.0
 
 dependencies:
+  '@ant-design/icons': 4.7.0_biqbaboplfbrettd7655fr4n2y
   antd: 4.21.5_biqbaboplfbrettd7655fr4n2y
   axios: 0.27.2
   js-cookie: 3.0.1

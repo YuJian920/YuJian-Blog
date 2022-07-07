@@ -17,5 +17,5 @@ export const splitTime = (time: string) => {
  * @returns Array
  */
 export const newArray = (length: number, data = "1") => {
-  Array(length).fill(data);
+  return Array(length).fill(data);
 };
