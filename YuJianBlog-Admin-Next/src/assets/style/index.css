@@ -1,0 +1,22 @@
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+a {
+  text-decoration: none;
+  color: var(--theme-font-color);
+}
+
+img {
+  vertical-align: top;
+}
+
+.flexEle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

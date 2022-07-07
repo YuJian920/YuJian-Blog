@@ -37,6 +37,19 @@
 - Vite
 - Ant Design
 
+### 博客管理后台 YuJianBlog-Admin-Next 技术栈
+
+> 从 Antd 迁移到 Mantine 重构的博客管理后台，是博客管理后台的下一个主要版本
+
+- React
+- React Redux Toolkit
+- React Router V6
+- React Query
+- React-Markdown
+- React-Markdown-Editor-Lite
+- Vite
+- Mantine
+
 ### 博客管理服务端 YuJianBlog-Server 技术栈
 
 - Koa
