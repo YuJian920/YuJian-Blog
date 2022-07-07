@@ -1,14 +1,50 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Layout, Menu, MenuProps } from "antd";
-import {
-  BookOutlined,
-  DashboardOutlined,
-  HighlightOutlined,
-  FileSearchOutlined,
-  DeploymentUnitOutlined,
-} from "@ant-design/icons";
+import routerConfig from "../../../../router";
+import type { RouterConfig } from "../../../../router";
 import "../../index.less";
+
+interface MenuItemType {
+  label: JSX.Element;
+  key: string;
+  icon: JSX.Element;
+  children?: RouterConfig[];
+}
+
+/**
+ * 获取路由配置自动生成菜单项
+ * @param router
+ * @returns
+ */
+const generateRouter = (router: RouterConfig[]) => {
+  const flattenRecursion = (data: RouterConfig[]): MenuItemType[] => {
+    const children: MenuItemType[] = [];
+    data.forEach((item: any) => {
+      if (item["children"]) {
+        children.push({
+          label: <Link to={item.path}>{item.name}</Link>,
+          key: item.path,
+          icon: item.icon,
+          children: flattenRecursion(item["children"]),
+        });
+      } else {
+        children.push({
+          label: <Link to={item.path}>{item.name}</Link>,
+          key: item.path,
+          icon: item.icon,
+        });
+      }
+    });
+
+    return children;
+  };
+
+  return flattenRecursion(router)[0].children;
+};
+
+// 菜单项
+const menuItem = generateRouter(routerConfig);
 
 const pageSider = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -18,39 +54,6 @@ const pageSider = () => {
   useEffect(() => {
     setSelectedKeys([pathname]);
   }, [pathname]);
-
-  const menuItem: MenuProps["items"] = useMemo(
-    () => [
-      {
-        label: <Link to="/">Dashboard</Link>,
-        key: "/",
-        icon: <DashboardOutlined />,
-      },
-      {
-        label: "博客管理",
-        key: "/Blog",
-        icon: <BookOutlined />,
-        children: [
-          {
-            label: <Link to="/Blog/ArticleList">文章列表</Link>,
-            key: "/Blog/ArticleList",
-            icon: <FileSearchOutlined />,
-          },
-          {
-            label: <Link to="/Blog/ArticleEdit">文章编辑</Link>,
-            key: "/Blog/ArticleEdit",
-            icon: <HighlightOutlined />,
-          },
-          {
-            label: <Link to="/Blog/Custom">博客样式</Link>,
-            key: "/Blog/Custom",
-            icon: <DeploymentUnitOutlined />,
-          },
-        ],
-      },
-    ],
-    []
-  );
 
   return (
     <Layout.Sider
@@ -64,7 +67,7 @@ const pageSider = () => {
         defaultSelectedKeys={selectedKeys}
         selectedKeys={selectedKeys}
         style={{ height: "100%", borderRight: 0 }}
-        items={menuItem}
+        items={menuItem as MenuProps["items"]}
       />
     </Layout.Sider>
   );

@@ -1,37 +1,37 @@
 {
   "name": "yujianblog_admin",
   "description": "一个简单的基于 React 的博客后台管理系统",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "antd": "^4.20.5",
+    "antd": "^4.21.5",
     "axios": "^0.27.2",
     "js-cookie": "^3.0.1",
     "lib-flexible": "^0.3.2",
     "postcss-pxtorem": "^6.0.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-markdown": "^8.0.3",
     "react-markdown-editor-lite": "^1.3.2",
-    "react-query": "^3.39.0",
-    "react-redux": "^8.0.1",
-    "react-router-dom": "^6.2.2",
+    "react-query": "^3.39.1",
+    "react-redux": "^8.0.2",
+    "react-router-dom": "^6.3.0",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.2",
-    "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.4",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^1.3.2",
-    "less": "^4.1.2",
+    "less": "^4.1.3",
     "rollup-plugin-visualizer": "^5.6.0",
-    "typescript": "^4.6.4",
-    "vite": "^2.9.9",
-    "vite-plugin-imp": "^2.1.8"
+    "typescript": "^4.7.4",
+    "vite": "^2.9.13",
+    "vite-plugin-imp": "^2.2.0"
   }
 }
