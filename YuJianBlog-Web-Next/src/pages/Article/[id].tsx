@@ -49,8 +49,6 @@ const Article = ({ data }: { data: ArticleData }) => (
   </article>
 );
 
-type ParamsType = { id: string };
-
 export const getStaticPaths = async () => {
   const articleList: ArticleData[] = await request("/api/article");
   const paths = articleList.map((mapItem) => ({
@@ -59,6 +57,7 @@ export const getStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
+type ParamsType = { id: string };
 export const getStaticProps = async ({ params }: { params: ParamsType }) => {
   const articleInfo = await request<ArticleData>(`/api/article/${params.id}`);
 

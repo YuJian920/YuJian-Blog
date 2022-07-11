@@ -23,7 +23,7 @@ const Home = ({ articleList, customData }: HomeAppProps) => (
 
 export const getStaticProps = async () => {
   const articleList = await request<ArticleData[]>("/api/article");
-  const customData = await request<BlogCustom>("/api/blogCustom");
+  const customData = await request<BlogCustom[]>("/api/blogCustom");
 
   return { props: { articleList, customData } };
 };
