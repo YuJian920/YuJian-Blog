@@ -21,7 +21,7 @@ class Article extends Model<
 
   static async findArticleById(id: string) {
     const articleData = await Article.findOne({ where: { id } });
-    if (!articleData) throw new Fail("文章不存在", { notFound: true });
+    if (!articleData) throw new Fail("文章不存在");
     else return articleData;
   }
 
