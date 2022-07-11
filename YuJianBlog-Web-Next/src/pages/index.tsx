@@ -1,27 +1,31 @@
-import { useArticleList } from "../hook/useArticle";
-import { useCustom } from "../hook/useCustom";
 import ArticleBox from "../components/ArticleBox";
-import Loading from "../components/Loading";
+import { AppProps, ArticleData, BlogCustom } from "../type";
+import request from "../utils/request";
 import style from "./index.module.scss";
 
-const Home = () => {
-  const { data: articleList, isLoading: articleLoading } = useArticleList();
-  const { data: customData, isLoading: customLoading } = useCustom();
+interface HomeAppProps extends AppProps {
+  articleList: ArticleData[];
+  customData: BlogCustom[];
+}
 
-  return articleLoading || customLoading ? (
-    <Loading />
-  ) : (
-    <>
-      <div className={style.home__slogan}>
-        {customData?.[0].slogan || "无物为真，诸行皆允"}
-      </div>
-      <div className={style.home__content}>
-        {articleList?.map((mapItem) => (
-          <ArticleBox key={mapItem.id} articleData={mapItem} />
-        ))}
-      </div>
-    </>
-  );
+const Home = ({ articleList, customData }: HomeAppProps) => (
+  <>
+    <div className={style.home__slogan}>
+      {customData?.[0].slogan || "无物为真，诸行皆允"}
+    </div>
+    <div className={style.home__content}>
+      {articleList?.map((mapItem) => (
+        <ArticleBox key={mapItem.id} articleData={mapItem} />
+      ))}
+    </div>
+  </>
+);
+
+export const getStaticProps = async () => {
+  const articleList = await request<ArticleData[]>("/api/article");
+  const customData = await request<BlogCustom>("/api/blogCustom");
+
+  return { props: { articleList, customData } };
 };
 
 export default Home;

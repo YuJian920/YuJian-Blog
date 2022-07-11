@@ -1,6 +1,7 @@
 import { baseURL } from "./config";
 
-const request = async (endpoint: string) => {
+const request = async <T>(endpoint: string): Promise<Awaited<T>> => {
+  console.log("endpoint", endpoint);
   return fetch(`${baseURL}${endpoint}`)
     .then(async (response) => {
       const result = await response.json();

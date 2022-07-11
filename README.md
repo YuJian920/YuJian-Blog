@@ -20,7 +20,6 @@
 > 基于 Next.js 服务端渲染的博客前端，是博客前端的下一个主要版本
 
 - React
-- React Query
 - React-Markdown
 - React-Syntax-Highlighter
 - Next
