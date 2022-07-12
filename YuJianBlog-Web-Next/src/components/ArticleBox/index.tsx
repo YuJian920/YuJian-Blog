@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ArticleData } from "../../type";
-import { splitTime } from "../../utils";
+import { splitTime, imagesLoader } from "../../utils";
 import style from "./index.module.scss";
 
 const ArticleBox = ({ articleData }: { articleData: ArticleData }) => {
@@ -11,6 +11,7 @@ const ArticleBox = ({ articleData }: { articleData: ArticleData }) => {
     <Link href={`/Article/${id}`}>
       <div className={style.articleBox}>
         <Image
+          loader={imagesLoader}
           src={cover_url || ""}
           height={500}
           width={800}

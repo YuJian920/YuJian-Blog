@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import { ArticleData } from "../../type";
-import { splitTime } from "../../utils";
+import { splitTime, imagesLoader } from "../../utils";
 import request from "../../utils/request";
 import CustomCode from "./components/CustomCode";
 import CustomFont from "./components/CustomFont";
@@ -24,6 +24,7 @@ const Article = ({ data }: { data: ArticleData }) => (
     <div className={style.article__box}>
       <Image
         style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8 }}
+        loader={imagesLoader}
         src={data?.cover_url || ""}
         height={450}
         width={800}
