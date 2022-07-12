@@ -34,7 +34,7 @@ const Navigation = () => {
       <div className={style.pageHeader__container}>
         <span className={style["pageHeader__container-left"]}>
           <div className={style.leftImg}>
-            <Image src={YuJianLogo} alt="YuJianLogo" />
+            <Image src={YuJianLogo} alt="YuJianLogo" layout="responsive" />
           </div>
           <span className={style.leftSpan}>
             <Link href="/">YuJian's Blog</Link>
