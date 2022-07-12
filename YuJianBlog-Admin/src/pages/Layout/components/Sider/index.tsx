@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Layout, Menu, MenuProps } from "antd";
 import routerConfig from "../../../../router";
@@ -43,9 +43,6 @@ const generateRouter = (router: RouterConfig[]) => {
   return flattenRecursion(router)[0].children;
 };
 
-// 菜单项
-const menuItem = generateRouter(routerConfig);
-
 const pageSider = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [selectedKeys, setSelectedKeys] = useState(["Dashboard"]);
@@ -54,6 +51,9 @@ const pageSider = () => {
   useEffect(() => {
     setSelectedKeys([pathname]);
   }, [pathname]);
+
+  // 菜单项
+  const menuItem = useMemo(() => generateRouter(routerConfig), []);
 
   return (
     <Layout.Sider
