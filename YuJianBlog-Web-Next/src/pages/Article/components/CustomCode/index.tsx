@@ -2,7 +2,7 @@
 import { CodeProps } from "react-markdown/lib/ast-to-react";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import style from "../../index.less";
+import style from "../../index.module.scss";
 
 const CustomCode = ({
   node,
