@@ -26,7 +26,7 @@ const Article = ({ data }: { data: ArticleData }) => (
         style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8 }}
         loader={imagesLoader}
         src={data?.cover_url || ""}
-        height={450}
+        height={480}
         width={800}
         layout="responsive"
         alt={data?.title || "Article Logo"}
