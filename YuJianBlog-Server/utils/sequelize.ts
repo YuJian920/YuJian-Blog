@@ -17,6 +17,10 @@ const sequelize = new Sequelize(
       // underscored: true,
       freezeTableName: true,
     },
+    dialectOptions: {
+      dateStrings: true,
+      typeCast: true
+    }
   }
 );
 
