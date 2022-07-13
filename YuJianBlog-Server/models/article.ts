@@ -26,7 +26,7 @@ class Article extends Model<
   }
 
   static async findArticle() {
-    return await Article.findAll({ order: [["id", "DESC"]] });
+    return await Article.findAll({ order: [["createdAt", "DESC"]] });
   }
 }
 
