@@ -2,6 +2,7 @@
 import { CodeProps } from "react-markdown/lib/ast-to-react";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import "../../index.less";
 
 const CustomCode = ({
   node,
@@ -20,7 +21,7 @@ const CustomCode = ({
       {...props}
     />
   ) : (
-    <code className={className} {...props} />
+    <code className="customCode" {...props}>{children}</code>
   );
 };
 
