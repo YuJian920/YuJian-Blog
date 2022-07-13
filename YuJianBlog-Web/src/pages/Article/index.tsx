@@ -2,7 +2,6 @@ import ReactMarkdown from "react-markdown";
 import Loading from "../../components/Loading";
 import { useArticleDetail } from "../../hook/useArticle";
 import useDocumentTitle from "../../hook/useDocumentTitle";
-import { splitTime } from "../../utils";
 import CustomCode from "./components/CustomCode";
 import CustomFont from "./components/CustomFont";
 import CustomH2 from "./components/CustomH2";
@@ -22,7 +21,7 @@ const Article = () => {
           <div className="article__info">
             <span className="article__info-title">{data?.title}</span>
             <time className="article__info-lable">
-              Posted {splitTime(data?.createdAt || "")}
+              Posted {data?.createdAt || ""}
             </time>
           </div>
           <div className="article__box">

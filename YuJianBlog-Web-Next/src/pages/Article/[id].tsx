@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import { ArticleData } from "../../type";
-import { splitTime, imagesLoader } from "../../utils";
+import { imagesLoader } from "../../utils";
 import request from "../../utils/request";
 import CustomCode from "./components/CustomCode";
 import CustomFont from "./components/CustomFont";
@@ -18,7 +18,7 @@ const Article = ({ data }: { data: ArticleData }) => (
     <div className={style.article__info}>
       <span className={style["article__info-title"]}>{data?.title}</span>
       <time className={style["article__info-lable"]}>
-        Posted {splitTime(data?.createdAt || "")}
+        Posted {data?.createdAt || ""}
       </time>
     </div>
     <div className={style.article__box}>

@@ -1,7 +1,6 @@
 import { Button, Card, Table } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import { useArticleDelete, useArticleList } from "../../../hook/useArticle";
-import { splitTime } from "../../../utils";
 import TableSkeleton from "./components/TableSkeleton";
 import useArticleListStyles from "./style";
 
@@ -47,7 +46,7 @@ const ArticleList = () => {
                 <td>{mapItem.title}</td>
                 <td>{mapItem.description}</td>
                 <td className={classes.centerChild}>
-                  {splitTime(mapItem.createdAt!)}
+                  {mapItem.createdAt}
                 </td>
                 <td className={classes.centerChild}>
                   <Button

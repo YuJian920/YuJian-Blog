@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ArticleData } from "../../type";
-import { splitTime } from "../../utils";
 import "./index.less";
 
 const ArticleBox = ({ articleData }: { articleData: ArticleData }) => {
@@ -17,7 +16,7 @@ const ArticleBox = ({ articleData }: { articleData: ArticleData }) => {
           <span className="articleBox__box-title">{title}</span>
           <span className="articleBox__box-dep">{description}</span>
           <span className="articleBox__box-info">
-            Posted {splitTime(createdAt)}
+            Posted {createdAt}
           </span>
         </div>
       </Link>

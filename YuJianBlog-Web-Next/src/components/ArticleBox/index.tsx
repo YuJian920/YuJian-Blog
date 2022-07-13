@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ArticleData } from "../../type";
-import { splitTime, imagesLoader } from "../../utils";
+import { imagesLoader } from "../../utils";
 import style from "./index.module.scss";
 
 const ArticleBox = ({ articleData }: { articleData: ArticleData }) => {
@@ -23,7 +23,7 @@ const ArticleBox = ({ articleData }: { articleData: ArticleData }) => {
           <span className={style["articleBox__box-title"]}>{title}</span>
           <span className={style["articleBox__box-dep"]}>{description}</span>
           <span className={style["articleBox__box-info"]}>
-            Posted {splitTime(createdAt)}
+            Posted {createdAt}
           </span>
         </div>
       </div>
