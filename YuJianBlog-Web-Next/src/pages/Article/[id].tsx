@@ -1,7 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
+import type { GetStaticProps } from "next/types";
 import ReactMarkdown from "react-markdown";
-import { ArticleData } from "../../type";
+import type { ArticleData } from "../../type";
 import { imagesLoader } from "../../utils";
 import request from "../../utils/request";
 import CustomCode from "./components/CustomCode";
@@ -58,11 +59,10 @@ export const getStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-type ParamsType = { id: string };
-export const getStaticProps = async ({ params }: { params: ParamsType }) => {
-  const articleInfo = await request<ArticleData>(`/api/article/${params.id}`);
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const articleInfo = await request<ArticleData>(`/api/article/${params?.id}`);
 
-  return { props: { data: articleInfo } };
+  return { props: { data: articleInfo }, revalidate: 3600 };
 };
 
 export default Article;

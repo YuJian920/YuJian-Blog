@@ -1,3 +1,4 @@
+import type { GetStaticProps } from "next/types";
 import { AppProps, BlogCustom } from "../../type";
 import request from "../../utils/request";
 import style from "./index.module.scss";
@@ -18,10 +19,10 @@ const Footer = ({ customData }: FooterAppProps) => (
   </footer>
 );
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const customData = await request<BlogCustom>("/api/blogCustom");
 
-  return { props: { customData } };
+  return { props: { customData }, revalidate: 3600 };
 };
 
 export default Footer;

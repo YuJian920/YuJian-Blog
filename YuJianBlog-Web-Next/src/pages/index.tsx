@@ -1,3 +1,4 @@
+import type { GetStaticProps } from "next/types";
 import ArticleBox from "../components/ArticleBox";
 import { AppProps, ArticleData, BlogCustom } from "../type";
 import request from "../utils/request";
@@ -21,11 +22,11 @@ const Home = ({ articleList, customData }: HomeAppProps) => (
   </>
 );
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const articleList = await request<ArticleData[]>("/api/article");
   const customData = await request<BlogCustom[]>("/api/blogCustom");
 
-  return { props: { articleList, customData } };
+  return { props: { articleList, customData }, revalidate: 3600 };
 };
 
 export default Home;
