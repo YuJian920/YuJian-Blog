@@ -1,7 +1,8 @@
 {
   "name": "yujianblog-web",
   "description": "一个简单的基于 React 的博客",
-  "version": "2.0.2",
+  "version": "2.0.3",
+  "license": "GPL-3.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

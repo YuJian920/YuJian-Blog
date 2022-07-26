@@ -9,6 +9,9 @@ import CustomCode from "./components/CustomCode";
 import CustomFont from "./components/CustomFont";
 import CustomH2 from "./components/CustomH2";
 import CustomLink from "./components/CustomLink";
+import CustomLi from "./components/CustomLi";
+import CustomUl from "./components/CustomUl";
+import CustomBlockquote from "./components/CustomBlockquote";
 import style from "./index.module.scss";
 
 const Article = ({ data }: { data: ArticleData }) => (
@@ -42,6 +45,10 @@ const Article = ({ data }: { data: ArticleData }) => (
             a: CustomLink,
             h2: CustomH2,
             p: CustomFont,
+            li: CustomLi,
+            ul: CustomUl,
+            ol: CustomUl,
+            blockquote: CustomBlockquote,
           }}
         >
           {data?.content || ""}
