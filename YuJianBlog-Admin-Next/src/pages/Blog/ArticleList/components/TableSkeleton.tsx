@@ -1,10 +1,6 @@
 import { Skeleton } from "@mantine/core";
-import { newArray } from "../../../../../utils";
-
-interface TableSkeletonProps extends AppProps {
-  row: number;
-  col: number;
-}
+import { newArray } from "../../../../utils";
+import { TableSkeletonProps } from "../type";
 
 const TableSkeleton = ({ row, col }: TableSkeletonProps) => {
   const JSXElement = newArray(row).map((mapItem2: any, index) => (

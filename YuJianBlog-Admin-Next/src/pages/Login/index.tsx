@@ -1,74 +1,64 @@
-import {
-  Anchor,
-  Button,
-  Paper,
-  PasswordInput,
-  Text,
-  TextInput,
-  Title,
-} from "@mantine/core";
-import { useInputState } from "@mantine/hooks";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { loginActionAsync } from "../../store/user/async";
+import { Anchor, Button, Paper, Text, Title } from "@mantine/core";
+import React from "react";
+import ConfirmInput from "./components/ConfirmInput";
+import PasswordInputAny from "./components/PasswordInput";
+import UsernameInput from "./components/UsernameInput";
+import useLoginLogic from "./hooks/useLoginLogic";
+import useLoginRef from "./hooks/useLoginRef";
 import useLoginStyles from "./style";
+import type { LoginIocPropsType } from "./type";
 
 const Login = () => {
-  const [loginType, setloginType] = useState(true);
-  const [userNameValue, setUserNameValue] = useInputState("");
-  const [passWordValue, setPassWordValue] = useInputState("");
-  const [confirmValue, setConfirmValue] = useInputState("");
-  const dispatch = useDispatch();
   const { classes } = useLoginStyles();
+
+  return (
+    <LoginIoc classes={classes}>
+      <Title order={2} className={classes.title} align="center" mt="md" mb={50}>
+        YuJianBlog Admin
+      </Title>
+    </LoginIoc>
+  );
+};
+
+const LoginIoc = ({ classes, children }: LoginIocPropsType) => {
+  const { loginType, setloginType, onPostUser } = useLoginLogic();
+  const { passwordRef, usernameRef, confirmRef } = useLoginRef();
+
+  /**
+   * 切换注册模式
+   * @param event
+   */
+  const onLoginTypeChange = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    event.preventDefault();
+    setloginType(!loginType);
+  };
 
   /**
    * 提交登录或注册
    */
   const _onSumbit = () => {
+    const username = usernameRef.current?.usernameValue() || "";
+    const password = passwordRef.current?.passwordValue() || "";
+    const confirm = confirmRef.current?.confirmValue() || "";
+
     const params = {
-      username: userNameValue,
-      password: passWordValue,
+      username,
+      password,
+      confirm,
     };
-    if (loginType) {
-      dispatch<any>(loginActionAsync(params));
-    }
+
+    if (loginType) onPostUser(params);
   };
 
   return (
     <div className={classes.wrapper}>
       <Paper className={classes.form} radius={0} p={30}>
-        <Title
-          order={2}
-          className={classes.title}
-          align="center"
-          mt="md"
-          mb={50}
-        >
-          YuJianBlog Admin
-        </Title>
-
-        <TextInput
-          label="Username"
-          placeholder="Your Username"
-          size="md"
-          onChange={setUserNameValue}
-        />
-        <PasswordInput
-          label="Password"
-          placeholder="Your Password"
-          mt="md"
-          size="md"
-          onChange={setPassWordValue}
-        />
-        {!loginType && (
-          <PasswordInput
-            label="Confirm Password"
-            placeholder="Confirm Your Password"
-            mt="md"
-            size="md"
-            onChange={setConfirmValue}
-          />
-        )}
+        {children}
+        <UsernameInput ref={usernameRef} />
+        <PasswordInputAny ref={passwordRef} />
+        {!loginType && <ConfirmInput ref={confirmRef} />}
         <Button fullWidth mt="xl" size="md" onClick={_onSumbit}>
           {loginType ? "登录" : "注册"}
         </Button>
@@ -78,10 +68,7 @@ const Login = () => {
           <Anchor<"a">
             href="#"
             weight={700}
-            onClick={(event) => {
-              event.preventDefault();
-              setloginType((value) => !value);
-            }}
+            onClick={(e) => onLoginTypeChange(e)}
           >
             {loginType ? "注册" : "登录"}
           </Anchor>

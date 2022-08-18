@@ -6,16 +6,10 @@ import {
   useMantineColorScheme,
 } from "@mantine/core";
 import { MoonStars, Sun } from "tabler-icons-react";
+import type { UserButtonProps } from "../../type";
 import useUserButtonStyles from "./style";
 
-interface UserButtonProps {
-  image: string;
-  name: string;
-  email: string;
-}
-
 const UserButton = ({ image, name, email }: UserButtonProps) => {
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const { classes } = useUserButtonStyles();
 
   return (
@@ -33,15 +27,23 @@ const UserButton = ({ image, name, email }: UserButtonProps) => {
           </Text>
         </div>
 
-        <ActionIcon
-          variant="default"
-          onClick={() => toggleColorScheme()}
-          size={30}
-        >
-          {colorScheme === "dark" ? <Sun size={16} /> : <MoonStars size={16} />}
-        </ActionIcon>
+        <ToggleColorButton />
       </Group>
     </div>
+  );
+};
+
+/**
+ * 切换模式按钮
+ * @returns JSX.Element
+ */
+const ToggleColorButton = () => {
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+
+  return (
+    <ActionIcon variant="default" onClick={() => toggleColorScheme()} size={30}>
+      {colorScheme === "dark" ? <Sun size={16} /> : <MoonStars size={16} />}
+    </ActionIcon>
   );
 };
 

@@ -2,18 +2,32 @@ import {
   Button,
   Card,
   Group,
-  TextInput,
-  Textarea,
   SimpleGrid,
+  Textarea,
+  TextInput,
 } from "@mantine/core";
-import { useForm } from "@mantine/form";
-import { useBlogCustom, useBlogCustomMutation } from "../../../hook/useCustom";
+import SpinnerHoc from "../../../components/Spinner";
+import useBlogCustomLogic from "./hooks/useBlogCustomLogic";
+import type { BlogCustomIocPropsType } from "./type";
 
 const BlogCustom = () => {
-  const { data, isLoading: customLoading } = useBlogCustom();
-  const { mutateAsync, isLoading: editCustomLoading } = useBlogCustomMutation();
-  const customForm = useForm({ initialValues: data[0] });
+  const { customMutateAsync, isLoading, customForm } = useBlogCustomLogic();
+  return (
+    <SpinnerHoc loading={isLoading}>
+      <BlogCustomIoc mutateAsync={customMutateAsync} customForm={customForm}>
+        <Group position="right" mt="md">
+          <Button type="submit">提交</Button>
+        </Group>
+      </BlogCustomIoc>
+    </SpinnerHoc>
+  );
+};
 
+const BlogCustomIoc = ({
+  mutateAsync,
+  customForm,
+  children,
+}: BlogCustomIocPropsType) => {
   /**
    * 提交表单
    */
@@ -40,9 +54,7 @@ const BlogCustom = () => {
             {...customForm.getInputProps("footer")}
           />
         </SimpleGrid>
-        <Group position="right" mt="md">
-          <Button type="submit">提交</Button>
-        </Group>
+        {children}
       </form>
     </Card>
   );

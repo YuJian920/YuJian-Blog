@@ -1,10 +1,31 @@
-namespace globalThis {
-  export declare interface AppProps {
-    children?: React.ReactNode; // best, accepts everything React can render
-    // childrenElement: JSX.Element; // A single React element
-    style?: React.CSSProperties; // to pass through style props
-    // onChange?: React.FormEventHandler<HTMLInputElement>; // form events! the generic parameter is the type of event.target
-    // props: Props & React.ComponentPropsWithoutRef<"button">; // to impersonate all the props of a button element and explicitly not forwarding its ref
-    // props2: Props & React.ComponentPropsWithRef<MyButtonWithForwardRef>; // to impersonate all the props of MyButtonForwardedRef and explicitly forwarding its ref
-  }
+interface BaseResponse<T> {
+  code: number;
+  msg: string;
+  data: T;
+}
+
+interface AppProps {
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+}
+
+interface Article {
+  id: number;
+  title: string;
+  description: string;
+  cover_url: string;
+  content: string;
+  author: string;
+  createdAt?: string;
+  tips?: string;
+}
+
+interface User {
+  id?: number;
+  username: string;
+  password: string;
+}
+
+interface UserResponse {
+  token: string;
 }

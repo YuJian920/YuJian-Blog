@@ -1,9 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import type { UserState } from "../../pages/Login/type";
 import TokenHelper from "../../utils/tokenHelper";
-
-export interface UserState {
-  token: string | null;
-}
 
 const initialState: UserState = {
   token: TokenHelper.get(),
