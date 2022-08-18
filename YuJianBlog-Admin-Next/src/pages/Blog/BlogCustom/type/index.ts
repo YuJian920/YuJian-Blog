@@ -1,4 +1,4 @@
-import { UseFormReturnType } from "@mantine/form/lib/use-form";
+import { UseFormReturnType } from "@mantine/form";
 import { UseMutateAsyncFunction } from "react-query";
 
 export interface BlogCustom {
