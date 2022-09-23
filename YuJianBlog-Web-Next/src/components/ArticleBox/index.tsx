@@ -13,7 +13,7 @@ const ArticleBox = ({ articleData }: { articleData: ArticleData }) => {
         <Image
           loader={imagesLoader}
           src={cover_url || ""}
-          height={500}
+          height={460}
           width={800}
           layout="responsive"
           alt="Article Logo"

@@ -9,5 +9,5 @@ export const imagesLoader = ({
   width,
   quality,
 }: ImageLoaderProps): string => {
-  return `${src}?imageMogr2/cut/${width}/rquality/${quality || 80}`;
+  return `${src}?imageMogr2/thumbnail/${width}x/rquality/${quality || 80}`;
 };
