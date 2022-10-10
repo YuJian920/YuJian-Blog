@@ -1,6 +1,6 @@
-import type { GetStaticProps } from "next/types";
+import type { GetServerSideProps } from "next/types";
 import ArticleBox from "../components/ArticleBox";
-import { AppProps, ArticleData, BlogCustom } from "../type";
+import type { AppProps, ArticleData, BlogCustom } from "../type";
 import request from "../utils/request";
 import style from "./index.module.scss";
 
@@ -22,11 +22,11 @@ const Home = ({ articleList, customData }: HomeAppProps) => (
   </>
 );
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const articleList = await request<ArticleData[]>("/api/article");
   const customData = await request<BlogCustom[]>("/api/blogCustom");
 
-  return { props: { articleList, customData }, revalidate: 3600 };
+  return { props: { articleList, customData } };
 };
 
 export default Home;

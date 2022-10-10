@@ -1,17 +1,16 @@
 import Head from "next/head";
-import Image from "next/image";
-import type { GetStaticProps } from "next/types";
+import type { GetServerSideProps } from "next/types";
 import ReactMarkdown from "react-markdown";
+import BlogImage from "../../components/BlogImage";
 import type { ArticleData } from "../../type";
-import { imagesLoader } from "../../utils";
 import request from "../../utils/request";
+import CustomBlockquote from "./components/CustomBlockquote";
 import CustomCode from "./components/CustomCode";
 import CustomFont from "./components/CustomFont";
 import CustomH2 from "./components/CustomH2";
-import CustomLink from "./components/CustomLink";
 import CustomLi from "./components/CustomLi";
+import CustomLink from "./components/CustomLink";
 import CustomUl from "./components/CustomUl";
-import CustomBlockquote from "./components/CustomBlockquote";
 import style from "./index.module.scss";
 
 const Article = ({ data }: { data: ArticleData }) => (
@@ -26,14 +25,11 @@ const Article = ({ data }: { data: ArticleData }) => (
       </time>
     </div>
     <div className={style.article__box}>
-      <Image
-        style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8 }}
-        loader={imagesLoader}
-        src={data?.cover_url || ""}
-        height={480}
-        width={800}
-        layout="responsive"
-        alt={data?.title || "Article Logo"}
+      <BlogImage
+        height={550}
+        imageUrl={data?.cover_url || ""}
+        imageAlt={data?.title}
+        radius={8}
       />
       {data?.tips && (
         <div className={style["article__box-tips"]}>{data.tips}</div>
@@ -58,18 +54,14 @@ const Article = ({ data }: { data: ArticleData }) => (
   </article>
 );
 
-export const getStaticPaths = async () => {
-  const articleList: ArticleData[] = await request("/api/article");
-  const paths = articleList.map((mapItem) => ({
-    params: { id: mapItem.id.toString() },
-  }));
-  return { paths, fallback: false };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const articleInfo = await request<ArticleData>(`/api/article/${params?.id}`);
 
-  return { props: { data: articleInfo }, revalidate: 3600 };
+  if (!articleInfo.id) return { notFound: true };
+
+  return {
+    props: { data: articleInfo },
+  };
 };
 
 export default Article;
