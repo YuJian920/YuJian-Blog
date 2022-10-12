@@ -79,47 +79,4 @@
       }
     }
   }
-
-  .customCode {
-    padding: 0.2em 0.4em;
-    margin: 0;
-    font-size: 85%;
-    background-color: rgba(27, 31, 35, 0.05);
-    border-radius: 3px;
-  }
-
-  .customLink {
-    color: #126bae;
-    cursor: pointer;
-  }
-
-  .customH2 {
-    span {
-      padding-left: 10px;
-      border-left: 3px solid #2474b5;
-    }
-  }
-
-  .customFont {
-    line-height: 1.8;
-    margin: 8px 0;
-    font-size: 16px;
-  }
-
-  .customLi {
-    line-height: 2;
-  }
-
-  .customUl {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  .customBlockquote {
-    color: #666666;
-    padding: 1px 23px;
-    margin: 22px 0;
-    border-left: 4px solid #cbcbcb;
-    background-color: #f8f8f8
-  }
 }

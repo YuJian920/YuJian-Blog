@@ -1,4 +1,4 @@
-import type { GetServerSideProps, GetStaticProps } from "next/types";
+import type { GetStaticProps } from "next/types";
 import ArticleBox from "../components/ArticleBox";
 import type { AppProps, ArticleData, BlogCustom } from "../type";
 import request from "../utils/request";

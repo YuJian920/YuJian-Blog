@@ -2,13 +2,18 @@ import Link from "next/link";
 import type { ArticleData } from "../../type";
 import BlogImage from "../BlogImage";
 import style from "./index.module.scss";
+import { qprogressStart } from "../../utils";
 
 const ArticleBox = ({ articleData }: { articleData: ArticleData }) => {
   const { id, title, description, cover_url, createdAt } = articleData;
 
+  const onLinkClick = () => {
+    qprogressStart();
+  };
+
   return (
     <Link href={`/Article/${id}`}>
-      <div className={style.articleBox}>
+      <div className={style.articleBox} onClick={onLinkClick}>
         <BlogImage
           imageUrl={cover_url || ""}
           imageAlt={title}
