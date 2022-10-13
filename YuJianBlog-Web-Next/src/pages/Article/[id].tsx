@@ -26,7 +26,6 @@ const Article = ({ data }: { data: ArticleData }) => {
       </div>
       <div className={style.article__box}>
         <BlogImage
-          height={550}
           imageUrl={data?.cover_url || ""}
           imageAlt={data?.title}
           radius={8}

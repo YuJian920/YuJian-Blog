@@ -14,7 +14,13 @@ const Navigation = () => (
     <div className={style.pageHeader__container}>
       <span className={style["pageHeader__container-left"]}>
         <div className={style.leftImg}>
-          <Image src={YuJianLogo} alt="YuJianLogo" layout="responsive" />
+          <Image
+            src={YuJianLogo}
+            alt="YuJianLogo"
+            draggable={false}
+            layout="responsive"
+            priority
+          />
         </div>
         <span className={style.leftSpan}>
           <Link href="/">YuJian's Blog</Link>
@@ -65,14 +71,32 @@ const DarkModeButton = () => {
   const onDarkMode = (value: boolean) => {
     if (value) {
       document.documentElement.style.setProperty("--theme-bg-color", "#0f0f0f");
-      document.documentElement.style.setProperty("--theme-font-color", "#ced8de");
-      document.documentElement.style.setProperty("--theme-box-color", "#2d3235");
-      document.documentElement.style.setProperty("--theme-slogan-color", "linear-gradient(45deg,rgba(147, 181, 207, 1) 0%,rgba(147, 181, 207, 0.4) 100%)");
+      document.documentElement.style.setProperty(
+        "--theme-font-color",
+        "#ced8de"
+      );
+      document.documentElement.style.setProperty(
+        "--theme-box-color",
+        "#2d3235"
+      );
+      document.documentElement.style.setProperty(
+        "--theme-slogan-color",
+        "linear-gradient(45deg,rgba(147, 181, 207, 1) 0%,rgba(147, 181, 207, 0.4) 100%)"
+      );
     } else {
       document.documentElement.style.setProperty("--theme-bg-color", "#fafafa");
-      document.documentElement.style.setProperty("--theme-font-color", "#000000");
-      document.documentElement.style.setProperty("--theme-box-color", "#ffffff");
-      document.documentElement.style.setProperty("--theme-slogan-color", "linear-gradient(45deg,rgba(43, 115, 175, 1) 0%,rgba(43, 115, 175, 0.4) 100%)");
+      document.documentElement.style.setProperty(
+        "--theme-font-color",
+        "#000000"
+      );
+      document.documentElement.style.setProperty(
+        "--theme-box-color",
+        "#ffffff"
+      );
+      document.documentElement.style.setProperty(
+        "--theme-slogan-color",
+        "linear-gradient(45deg,rgba(43, 115, 175, 1) 0%,rgba(43, 115, 175, 0.4) 100%)"
+      );
     }
 
     setDarkMode(value);

@@ -1,5 +1,4 @@
 .article {
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,23 +12,20 @@
     justify-content: center;
     align-items: center;
     font-weight: 700;
-    // margin-top: 3.2rem;
     margin-bottom: 3.2rem;
-    width: 100rem;
-
-    @media (max-width: 500px) {
-      margin-top: 1rem;
-      width: 30rem;
-      margin-bottom: 1.5rem;
-    }
 
     &-title {
-      font-size: 4rem;
+      text-align: center;
+      font-size: 5rem;
       line-height: 4rem;
       margin-bottom: 1.2rem;
 
+      @media (max-width: 900px) {
+        font-size: 5vw;
+      }
+
       @media (max-width: 500px) {
-        font-size: 2.4rem;
+        font-size: 6vw;
         line-height: 2.5rem;
       }
     }
@@ -46,11 +42,14 @@
     box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.02),
       1px 1px 15px 0 rgba(0, 0, 0, 0.03);
     border-radius: 0.8rem;
-    width: 100rem;
+    width: 60vw;
+
+    @media (max-width: 1000px) {
+      width: 90vw;
+    }
 
     @media (max-width: 500px) {
-      margin-top: 1rem;
-      width: 38rem;
+      width: 95vw;
     }
 
     &-tips {
@@ -61,15 +60,15 @@
       background-color: #f1c4cd;
       color: #ff597a;
       font-weight: 700;
-      margin-top: 3rem;
-      padding: 2rem 0;
-      width: 100%;
+      margin-top: 3%;
+      padding: 1.5rem 1rem;
+      max-width: 100%;
     }
 
     &-content {
       display: flex;
       flex-direction: column;
-      margin: 1rem 2rem;
+      margin: 1rem;
       padding-bottom: 2rem;
       overflow-wrap: break-word;
       font-size: 1.5rem;

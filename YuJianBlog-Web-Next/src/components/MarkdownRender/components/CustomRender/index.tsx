@@ -29,7 +29,7 @@ const CodeRender = ({
       style={oneDark}
       language={match[1]}
       PreTag="div"
-      showLineNumbers={true}
+      // showLineNumbers={true}
       children={String(children).replace(/\n$/, "")}
       {...props}
     />
