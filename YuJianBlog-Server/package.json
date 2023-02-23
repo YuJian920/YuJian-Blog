@@ -13,7 +13,7 @@
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^10.1.1",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.20.1"
+    "sequelize": "^6.28.2"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^8.5.8",
